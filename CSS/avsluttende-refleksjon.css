@@ -1,0 +1,126 @@
+/* Introduksjon */
+
+.refleksjon-intro {
+    background: #f7f7f7;
+    border-bottom: 1px solid #eee;
+}
+
+    .refleksjon-intro > div {
+        max-width: 1100px;
+        margin: auto;
+        padding: 150px 30px 110px;
+    }
+
+.refleksjon-overtekst {
+    margin-bottom: 20px;
+    color: #777;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.refleksjon-intro h1 {
+    margin: 0 0 35px;
+    color: #111;
+    font-size: clamp(55px, 8vw, 95px);
+    line-height: .95;
+    letter-spacing: -4px;
+}
+
+.refleksjon-intro p:last-child {
+    max-width: 650px;
+    color: #555;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* Refleksjon */
+
+.refleksjon {
+    max-width: 1100px;
+    margin: auto;
+    padding: 80px 30px 120px;
+}
+
+.refleksjon-del {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 25px;
+    padding: 70px 0;
+    border-bottom: 1px solid #eee;
+}
+
+    .refleksjon-del > span {
+        color: #999;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+
+    .refleksjon-del h2 {
+        margin: 0 0 25px;
+        color: #111;
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    .refleksjon-del p {
+        max-width: 750px;
+        margin: 0 0 20px;
+        color: #555;
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+
+/* Avslutning */
+
+.refleksjon-slutt {
+    padding: 120px 0 40px;
+}
+
+    .refleksjon-slutt h2 {
+        margin: 0;
+        color: #111;
+        font-size: clamp(40px, 6vw, 70px);
+        line-height: 1;
+        letter-spacing: -2px;
+    }
+
+
+/* Mobil */
+
+@media (max-width: 750px) {
+
+    .refleksjon-intro > div {
+        padding: 100px 20px 80px;
+    }
+
+    .refleksjon-intro h1 {
+        font-size: 55px;
+        letter-spacing: -3px;
+    }
+
+    .refleksjon {
+        padding: 50px 20px 90px;
+    }
+
+    .refleksjon-del {
+        grid-template-columns: 40px 1fr;
+        gap: 15px;
+        padding: 50px 0;
+    }
+
+        .refleksjon-del h2 {
+            font-size: 26px;
+        }
+
+        .refleksjon-del p {
+            font-size: 15px;
+        }
+
+    .refleksjon-slutt {
+        padding-top: 90px;
+    }
+}

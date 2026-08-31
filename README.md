@@ -1,2 +1,1 @@
-# dennistae.github.io
-IS-302
+# praksis

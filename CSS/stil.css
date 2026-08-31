@@ -1,0 +1,351 @@
+/* =====================================================
+   GENERELLE INNSTILLINGER
+   ===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: #111111;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   NAVIGASJON
+   ===================================================== */
+
+.topptekst {
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eeeeee;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navigasjon {
+    max-width: 1300px;
+    margin: auto;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+
+/* Logo */
+
+.logo {
+    text-decoration: none;
+    color: #111111;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+    .logo span {
+        color: #777777;
+    }
+
+
+/* Meny */
+
+.meny {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+    .meny li {
+        position: relative;
+    }
+
+    .meny a {
+        text-decoration: none;
+        color: #222222;
+        font-size: 14px;
+        font-weight: 600;
+        transition: 0.2s ease;
+    }
+
+        .meny a:hover {
+            color: #777777;
+        }
+
+
+/* =====================================================
+   DROPDOWN
+   ===================================================== */
+
+.dropdown-knapp {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.pil {
+    font-size: 15px;
+}
+
+
+/* Selve dropdown-menyen */
+
+.dropdown-meny {
+    position: absolute;
+    top: 30px;
+    left: -15px;
+    min-width: 160px;
+    background-color: #ffffff;
+    list-style: none;
+    border: 1px solid #eeeeee;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 8px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: 0.2s ease;
+}
+
+
+/* Vis dropdown når musen er over */
+
+.dropdown:hover .dropdown-meny {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* Dropdown-elementer */
+
+.dropdown-meny li {
+    width: 100%;
+}
+
+.dropdown-meny a {
+    display: block;
+    padding: 10px 18px;
+    font-size: 13px;
+}
+
+    .dropdown-meny a:hover {
+        background-color: #f5f5f5;
+    }
+
+
+/* =====================================================
+   HERO / FORSIDE
+   ===================================================== */
+
+.hero {
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient( rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55) ), url("../bilder/hero.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+
+.hero-innhold {
+    max-width: 1300px;
+    width: 100%;
+    margin: auto;
+    padding: 100px 30px;
+    color: #ffffff;
+}
+
+
+.overtekst,
+.seksjon-overtekst {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    color: #777777;
+}
+
+.hero .overtekst {
+    color: #cccccc;
+}
+
+
+.hero h1 {
+    font-size: clamp(50px, 8vw, 100px);
+    line-height: 1;
+    margin-bottom: 30px;
+    font-weight: 800;
+}
+
+    .hero h1 span {
+        display: block;
+        color: #cccccc;
+    }
+
+
+.hero-tekst {
+    max-width: 600px;
+    font-size: 18px;
+    color: #dddddd;
+    margin-bottom: 35px;
+}
+
+
+/* Knapp */
+
+.hovedknapp {
+    display: inline-block;
+    padding: 14px 28px;
+    background-color: #ffffff;
+    color: #111111;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+    .hovedknapp:hover {
+        background-color: #dddddd;
+    }
+
+
+/* =====================================================
+   GENERELT INNHOLD
+   ===================================================== */
+
+.innhold {
+    max-width: 1100px;
+    margin: auto;
+    padding: 100px 30px;
+}
+
+    .innhold h2 {
+        font-size: 42px;
+        line-height: 1.1;
+        margin-bottom: 25px;
+    }
+
+    .innhold p {
+        max-width: 800px;
+        color: #555555;
+        margin-bottom: 20px;
+    }
+
+
+/* =====================================================
+   FOKUSOMRÅDER
+   ===================================================== */
+
+.fokus {
+    background-color: #f7f7f7;
+}
+
+.fokus-kort {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.kort {
+    background-color: #ffffff;
+    padding: 35px;
+    border: 1px solid #eeeeee;
+}
+
+    .kort h3 {
+        margin-bottom: 12px;
+        font-size: 20px;
+    }
+
+    .kort p {
+        font-size: 14px;
+        margin: 0;
+    }
+
+
+/* =====================================================
+   BUNNTEKST
+   ===================================================== */
+
+.bunntekst {
+    background-color: #111111;
+    color: #ffffff;
+    padding: 35px 30px;
+    text-align: center;
+}
+
+    .bunntekst p {
+        font-size: 13px;
+        color: #aaaaaa;
+        margin: 5px 0;
+    }
+
+
+/* =====================================================
+   MOBIL
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .navigasjon {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .meny {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+        .meny a {
+            font-size: 12px;
+        }
+
+    .hero {
+        min-height: 550px;
+    }
+
+    .fokus-kort {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .hero-tekst {
+        font-size: 16px;
+    }
+
+    .innhold {
+        padding: 70px 20px;
+    }
+
+        .innhold h2 {
+            font-size: 32px;
+        }
+
+    .rød {
+        color: #d71920;
+    }
+}
+
