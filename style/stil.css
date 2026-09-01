@@ -119,7 +119,7 @@ body {
 }
 
 
-/* Vis dropdown når musen er over */
+/* Vis dropdown nï¿½r musen er over */
 
 .dropdown:hover .dropdown-meny {
     opacity: 1;
@@ -243,9 +243,23 @@ body {
         margin-bottom: 20px;
     }
 
+    .oppdrag-liste {
+        margin: 20px 0 32px;
+        padding-left: 22px;
+    }
+    
+    .oppdrag-liste li {
+        color: #555555;
+        margin-bottom: 14px;
+        line-height: 1.6;
+    }
+    
+    .oppdrag-liste li:last-child {
+        margin-bottom: 0;
+    }
 
 /* =====================================================
-   FOKUSOMRÅDER
+   FOKUSOMRï¿½DER
    ===================================================== */
 
 .fokus {
@@ -254,7 +268,7 @@ body {
 
 .fokus-kort {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     margin-top: 50px;
 }
@@ -344,7 +358,7 @@ body {
             font-size: 32px;
         }
 
-    .rød {
+    .rï¿½d {
         color: #d71920;
     }
 }
