@@ -89,14 +89,17 @@ body {
    DROPDOWN
    ===================================================== */
 
-.dropdown-knapp {
+   .dropdown-knapp {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
 }
 
 .pil {
     font-size: 15px;
+    line-height: 1;
+    position: relative;
+    top: -4px;
 }
 
 
