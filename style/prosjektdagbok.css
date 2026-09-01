@@ -1,8 +1,8 @@
-/* Introduksjon */
+/** Introduksjon */
 
 .dagbok-introduksjon {
-    background: #f7f7f7;
-    border-bottom: 1px solid #eee;
+    background-color: var(--gra-lysest);
+    border-bottom: 1px solid var(--gra-lys);
 }
 
 .dagbok-introduksjon-innhold {
@@ -12,24 +12,35 @@
 }
 
 .dagbok-overtekst {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     margin-bottom: 20px;
-    color: #777;
+    color: var(--gra);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 3px;
 }
 
+.dagbok-overtekst::before {
+    content: "";
+    width: 18px;
+    height: 2px;
+    background-color: var(--rod);
+}
+
 .dagbok-introduksjon h1 {
     margin-bottom: 35px;
-    color: #111;
+    color: var(--svart);
     font-size: clamp(55px, 8vw, 95px);
     line-height: 1;
     letter-spacing: -3px;
+    font-weight: 800;
 }
 
 .dagbok-introduksjon-innhold > p:last-child {
     max-width: 700px;
-    color: #555;
+    color: var(--gra-mork);
     font-size: 18px;
     line-height: 1.7;
 }
@@ -38,7 +49,7 @@
 /* Dagbok */
 
 .dagbok {
-    background: #fff;
+    background-color: var(--hvit);
 }
 
 .dagbok-innhold {
@@ -51,39 +62,59 @@
 /* Uke */
 
 .uke {
-    border-top: 1px solid #ddd;
+    position: relative;
+    border-top: 1px solid var(--gra-lys);
 }
 
-    .uke:last-child {
-        border-bottom: 1px solid #ddd;
-    }
+.uke:last-child {
+    border-bottom: 1px solid var(--gra-lys);
+}
 
-    .uke summary {
-        display: grid;
-        grid-template-columns: 80px 1fr 40px;
-        align-items: center;
-        gap: 25px;
-        padding: 30px 10px;
-        cursor: pointer;
-        list-style: none;
-        transition: .2s;
-    }
+.uke summary {
+    position: relative;
+    display: grid;
+    grid-template-columns: 80px 1fr 40px;
+    align-items: center;
+    gap: 25px;
+    padding: 30px 10px;
+    cursor: pointer;
+    list-style: none;
+    transition: .2s ease;
+}
 
-        .uke summary::-webkit-details-marker {
-            display: none;
-        }
+.uke summary::-webkit-details-marker {
+    display: none;
+}
 
-        .uke summary:hover {
-            padding-left: 20px;
-            padding-right: 20px;
-            background: #f8f8f8;
-        }
+.uke summary:hover {
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: var(--gra-lysest);
+}
+
+
+/* Rød markør ved hover */
+
+.uke summary::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 0;
+    background-color: var(--rod);
+    transition: height .2s ease;
+}
+
+.uke summary:hover::before {
+    height: 100%;
+}
 
 
 /* Ukeinfo */
 
 .uke-nummer {
-    color: #999;
+    color: var(--gra);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -92,7 +123,7 @@
 .uke-info span {
     display: block;
     margin-bottom: 5px;
-    color: #999;
+    color: var(--gra);
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -100,13 +131,14 @@
 
 .uke-info h2 {
     margin: 0;
-    color: #111;
+    color: var(--svart);
     font-size: 23px;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: -0.3px;
 }
 
 
-/* Pluss */
+/* Pil */
 
 .uke-symbol {
     display: flex;
@@ -114,18 +146,35 @@
     justify-content: center;
     width: 32px;
     height: 32px;
-    border: 1px solid #ddd;
-    border-radius: 50%;
-    color: #555;
-    font-size: 20px;
-    transition: .25s;
+    border: 1px solid var(--gra-lys);
+    border-radius: 0;
+    position: relative;
+    transition: .25s ease;
 }
 
-.uke[open] .uke-symbol {
+.uke-symbol::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid var(--gra-mork);
+    border-bottom: 1.5px solid var(--gra-mork);
     transform: rotate(45deg);
-    background: #111;
-    border-color: #111;
-    color: #fff;
+    margin-top: -4px;
+    transition: .25s ease;
+}
+
+
+/* Når uken er åpnet */
+
+.uke[open] .uke-symbol {
+    background-color: var(--rod);
+    border-color: var(--rod);
+}
+
+.uke[open] .uke-symbol::before {
+    border-color: var(--hvit);
+    transform: rotate(225deg);
+    margin-top: 4px;
 }
 
 
@@ -136,16 +185,16 @@
     padding: 0 10px 45px 105px;
 }
 
-    .uke-innhold p {
-        margin: 0 0 18px;
-        color: #555;
-        font-size: 15px;
-        line-height: 1.8;
-    }
+.uke-innhold p {
+    margin: 0 0 18px;
+    color: var(--gra-mork);
+    font-size: 15px;
+    line-height: 1.8;
+}
 
-        .uke-innhold p:last-child {
-            margin-bottom: 0;
-        }
+.uke-innhold p:last-child {
+    margin-bottom: 0;
+}
 
 
 /* Mobil */
@@ -179,9 +228,9 @@
         padding: 0 5px 35px 65px;
     }
 
-        .uke-innhold p {
-            font-size: 14px;
-        }
+    .uke-innhold p {
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 500px) {
@@ -198,7 +247,6 @@
     .uke-symbol {
         width: 27px;
         height: 27px;
-        font-size: 17px;
     }
 
     .uke-innhold {

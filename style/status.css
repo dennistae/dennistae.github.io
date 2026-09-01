@@ -1,47 +1,64 @@
+/* =====================================================
+   STATUS
+   ===================================================== */
+
 /* Introduksjon */
 
 .status-intro {
-    background: #f7f7f7;
-    border-bottom: 1px solid #eee;
+    background-color: var(--gra-lysest);
+    border-bottom: 1px solid var(--gra-lys);
 }
 
-    .status-intro > div {
-        max-width: 1100px;
-        margin: auto;
-        padding: 150px 30px 110px;
-    }
+.status-intro > div {
+    max-width: 1100px;
+    margin: auto;
+    padding: 150px 30px 110px;
+}
 
 .status-overtekst {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     margin-bottom: 20px;
-    color: #777;
+    color: var(--gra);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 3px;
 }
 
+.status-overtekst::before {
+    content: "";
+    width: 18px;
+    height: 2px;
+    background-color: var(--rod);
+}
+
 .status-intro h1 {
     margin: 0 0 35px;
-    color: #111;
+    color: var(--svart);
     font-size: clamp(60px, 9vw, 105px);
     line-height: .95;
     letter-spacing: -4px;
+    font-weight: 800;
 }
 
 .status-intro p:last-child {
     max-width: 650px;
-    color: #555;
+    color: var(--gra-mork);
     font-size: 18px;
     line-height: 1.7;
 }
 
 
-/* Innhold */
+/* =====================================================
+   INNHOLD
+   ===================================================== */
 
 .status-innhold {
     max-width: 1100px;
     margin: auto;
     padding: 90px 30px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--gra-lys);
 }
 
 .status-header {
@@ -51,89 +68,124 @@
     margin-bottom: 50px;
 }
 
-    .status-header span {
-        color: #999;
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 2px;
-    }
+.status-header span {
+    color: var(--gra);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
 
-    .status-header h2 {
-        margin: 0;
-        color: #111;
-        font-size: 32px;
-        font-weight: 600;
-    }
+.status-header h2 {
+    margin: 0;
+    color: var(--svart);
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
 
 
-/* Statuslinjer */
+/* =====================================================
+   STATUSLINJER
+   ===================================================== */
 
 .status-linje {
     display: flex;
     justify-content: space-between;
     padding: 22px 0;
-    border-top: 1px solid #eee;
-    color: #777;
+    border-top: 1px solid var(--gra-lys);
+    color: var(--gra-mork);
 }
 
-    .status-linje strong {
-        color: #111;
-        font-weight: 500;
-    }
+.status-linje strong {
+    color: var(--svart);
+    font-weight: 600;
+}
 
 
-/* Tekst */
+/* =====================================================
+   TEKST
+   ===================================================== */
 
 .status-tekst {
     max-width: 750px;
     margin-left: 85px;
 }
 
-    .status-tekst p {
-        margin: 0 0 22px;
-        color: #555;
-        font-size: 16px;
-        line-height: 1.8;
-    }
+.status-tekst p {
+    margin: 0 0 22px;
+    color: var(--gra-mork);
+    font-size: 16px;
+    line-height: 1.8;
+}
 
 
-/* Punkter */
+/* =====================================================
+   PUNKTER
+   ===================================================== */
 
 .status-punkter {
     margin-left: 85px;
 }
 
-    .status-punkter p {
-        padding: 20px 0;
-        margin: 0;
-        border-top: 1px solid #eee;
-        color: #333;
-        font-size: 16px;
-    }
+.status-punkter p {
+    position: relative;
+    padding: 20px 0 20px 22px;
+    margin: 0;
+    border-top: 1px solid var(--gra-lys);
+    color: var(--gra-mork);
+    font-size: 16px;
+}
+
+.status-punkter p::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 30px;
+    width: 8px;
+    height: 2px;
+    background-color: var(--rod);
+}
 
 
-/* Avslutning */
+/* =====================================================
+   AVSLUTNING
+   ===================================================== */
 
 .status-avslutning {
+    position: relative;
     padding-top: 120px;
     padding-bottom: 140px;
 }
 
-    .status-avslutning h2 {
-        margin: 0 0 30px;
-        color: #111;
-        font-size: clamp(40px, 6vw, 70px);
-        line-height: 1;
-        letter-spacing: -2px;
-    }
+.status-avslutning::before {
+    content: "";
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 46px;
+    height: 46px;
+    border-top: 2px solid var(--rod);
+    border-left: 2px solid var(--rod);
+}
 
-    .status-avslutning p:last-child {
-        color: #555;
-        font-size: 16px;
-    }
+.status-avslutning h2 {
+    margin: 0 0 30px;
+    color: var(--svart);
+    font-size: clamp(40px, 6vw, 70px);
+    line-height: 1;
+    letter-spacing: -2px;
+    font-weight: 800;
+}
+
+.status-avslutning p:last-child {
+    color: var(--gra-mork);
+    font-size: 16px;
+}
 
 
-/* Mobil */
+/* =====================================================
+   MOBIL
+   ===================================================== */
 
 @media (max-width: 750px) {
 
@@ -155,9 +207,9 @@
         gap: 15px;
     }
 
-        .status-header h2 {
-            font-size: 25px;
-        }
+    .status-header h2 {
+        font-size: 25px;
+    }
 
     .status-tekst,
     .status-punkter {
@@ -166,5 +218,14 @@
 
     .status-linje {
         gap: 20px;
+    }
+
+    .status-avslutning {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    .status-avslutning::before {
+        top: 60px;
     }
 }

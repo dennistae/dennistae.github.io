@@ -7,10 +7,19 @@ const erUnderside = window.location.pathname.includes("/html/");
 const rot = erUnderside ? "../" : "./";
 const htmlMappe = erUnderside ? "./" : "./html/";
 
+/* Finn aktiv side */
 
-/* ================================
-   NAVBAR
-================================ */
+const aktuellSide = window.location.pathname
+    .split("/")
+    .pop()
+    .toLowerCase();
+
+function erAktivSide(...sider) {
+    return sider.includes(aktuellSide);
+}
+
+
+/* Navbar */
 
 const navbar = `
 <header class="topptekst">
@@ -18,47 +27,54 @@ const navbar = `
     <nav class="navigasjon">
 
         <a href="${rot}index.html" class="logo">
+            <img src="${rot}images/team/Firmabakgrunn.png" alt="Smaragd Motorsport logo">
             SMARAGD <span>MOTORSPORT</span>
         </a>
 
         <ul class="meny">
 
             <li>
-                <a href="${htmlMappe}om-oss.html">
-                    Om oss
+                <a href="${htmlMappe}om-oss.html"
+                    class="${erAktivSide("om-oss.html") ? "aktiv" : ""}">
+                    OM OSS
                 </a>
             </li>
 
             <li>
-                <a href="${htmlMappe}oppgavebeskrivelse.html">
-                    Oppgave
+                <a href="${htmlMappe}oppgavebeskrivelse.html"
+                    class="${erAktivSide("oppgavebeskrivelse.html") ? "aktiv" : ""}">
+                    OPPGAVE
                 </a>
             </li>
 
             <li>
-                <a href="${htmlMappe}prosjektdagbok.html">
-                    Prosjektdagbok
+                <a href="${htmlMappe}prosjektdagbok.html"
+                    class="${erAktivSide("prosjektdagbok.html") ? "aktiv" : ""}">
+                    PROSJEKTDAGBOK
                 </a>
             </li>           
 
             <li class="dropdown">
 
-                <a href="#" class="dropdown-knapp">
-                    Statusrapport
+                <a href="#"
+                    class="dropdown-knapp ${erAktivSide("status-1.html", "status-2.html") ? "aktiv" : ""}">
+                    STATUSRAPPORT
                     <span class="pil">⌄</span>
                 </a>
 
                 <ul class="dropdown-meny">
 
                     <li>
-                        <a href="${htmlMappe}status-1.html">
-                            Statusrapport 1
+                        <a href="${htmlMappe}status-1.html"
+                            class="${erAktivSide("status-1.html") ? "aktiv" : ""}">
+                            STATUSRAPPORT 1
                         </a>
                     </li>
 
                     <li>
-                        <a href="${htmlMappe}status-2.html">
-                            Statusrapport 2
+                       <a href="${htmlMappe}status-2.html"
+                            class="${erAktivSide("status-2.html") ? "aktiv" : ""}">
+                            STATUSRAPPORT 2
                         </a>
                     </li>
 
@@ -67,8 +83,9 @@ const navbar = `
             </li>
 
             <li>
-                <a href="${htmlMappe}avsluttende-refleksjon.html">
-                    Avsluttende refleksjon
+                <a href="${htmlMappe}avsluttende-refleksjon.html"
+                    class="${erAktivSide("avsluttende-refleksjon.html") ? "aktiv" : ""}">
+                    AVSLUTTENDE REFLEKSJON
                 </a>
             </li>
 
@@ -80,29 +97,25 @@ const navbar = `
 `;
 
 
-/* ================================
-   FOOTER
-================================ */
+/* Footer */
 
 const footer = `
 <!-- Bunntekst -->
     <footer class="bunntekst">
 
         <p>
-            © 2026 Smaragd Motorsport – Praksisprosjekt
+            © 2026 Praksisprosjekt – Smaragd Motorsport
         </p>
 
         <p>
-            Mohammed · Noa · Dennis · Kaan · Marius
+            Mohammed Liban Osman · Noa Vincent Nordén · Dennis Tea · Efe Kaan Eksi · Marius Khiem Nguyen
         </p>
 
     </footer>
 `;
 
 
-/* ================================
-   SETT INN KOMPONENTER
-================================ */
+/* Sett inn komponenter */
 
 document.addEventListener("DOMContentLoaded", () => {
 
