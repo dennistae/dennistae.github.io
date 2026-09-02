@@ -1,4 +1,24 @@
 /* =====================================================
+   FARGER, TYPOGRAFI OG GRUNNLEGGENDE VARIABLER
+   ===================================================== */
+
+   :root {
+    --svart: #0a0a0a;
+    --svart-2: #141414;
+    --gra-mork: #4a4a4a;
+    --gra: #8a8a8a;
+    --gra-lys: #e2e2e2;
+    --gra-lysest: #f4f4f4;
+    --hvit: #ffffff;
+    --off-hvit: #fafafa;
+    --rod: #d71920;
+
+    --skrift: Arial, Helvetica, sans-serif;
+    --hoyde-nav: 74px;
+}
+
+
+/* =====================================================
    GENERELLE INNSTILLINGER
    ===================================================== */
 
@@ -13,10 +33,22 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #ffffff;
-    color: #111111;
+    font-family: var(--skrift);
+    background-color: var(--hvit);
+    color: var(--svart);
     line-height: 1.6;
+}
+
+:focus-visible {
+    outline: 2px solid var(--rod);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
 }
 
 
@@ -24,10 +56,10 @@ body {
    NAVIGASJON
    ===================================================== */
 
-.topptekst {
+   .topptekst {
     width: 100%;
-    background-color: #ffffff;
-    border-bottom: 1px solid #eeeeee;
+    background-color: var(--svart);
+    border-bottom: 2px solid #d71920;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -36,7 +68,7 @@ body {
 .navigasjon {
     max-width: 1300px;
     margin: auto;
-    min-height: 80px;
+    min-height: var(--hoyde-nav);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -47,16 +79,28 @@ body {
 /* Logo */
 
 .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     text-decoration: none;
-    color: #111111;
+    color: var(--hvit);
     font-size: 20px;
     font-weight: 800;
-    letter-spacing: 1px;
+    letter-spacing: 0.3px;
 }
 
-    .logo span {
-        color: #777777;
-    }
+.logo img {
+    width: 100px;
+    height: 35px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.logo span {
+    margin-left: -3px;
+    color: #cfcfcf;
+    font-weight: 700;
+}
 
 
 /* Meny */
@@ -65,41 +109,80 @@ body {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 35px;
+    gap: 32px;
 }
 
-    .meny li {
-        position: relative;
-    }
+.meny li {
+    position: relative;
+}
 
-    .meny a {
-        text-decoration: none;
-        color: #222222;
-        font-size: 14px;
-        font-weight: 600;
-        transition: 0.2s ease;
-    }
+.meny a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--hvit);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    padding: 8px 2px;
+    transition: color 0.15s ease;
+}
 
-        .meny a:hover {
-            color: #777777;
-        }
+.meny a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    width: 0%;
+    height: 2px;
+    background-color: var(--rod);
+    transition: width 0.2s ease;
+}
+
+.meny a:hover {
+    color: var(--hvit);
+}
+
+.meny a.aktiv::after {
+    width: 100%;
+    background-color: var(--rod);
+}
 
 
 /* =====================================================
    DROPDOWN
    ===================================================== */
 
-   .dropdown-knapp {
+.meny a.dropdown-knapp {
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
 .pil {
-    font-size: 15px;
-    line-height: 1;
-    position: relative;
-    top: -4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 8px;
+    height: 8px;
+    font-size: 0;
+    line-height: 0;
+    color: #cfcfcf;
+    transition: transform 0.2s ease;
+}
+
+.pil::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid currentColor;
+}
+
+.dropdown:hover .pil {
+    transform: rotate(180deg);
 }
 
 
@@ -107,22 +190,19 @@ body {
 
 .dropdown-meny {
     position: absolute;
-    top: 30px;
-    left: -15px;
-    min-width: 160px;
-    background-color: #ffffff;
+    top: 36px;
+    left: -16px;
+    min-width: 180px;
+    background-color: var(--svart);
     list-style: none;
-    border: 1px solid #eeeeee;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    padding: 8px 0;
+    border: 1px solid #333;
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.25);
+    padding: 0;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(10px);
-    transition: 0.2s ease;
+    transform: translateY(6px);
+    transition: 0.18s ease;
 }
-
-
-/* Vis dropdown n�r musen er over */
 
 .dropdown:hover .dropdown-meny {
     opacity: 1;
@@ -137,15 +217,28 @@ body {
     width: 100%;
 }
 
-.dropdown-meny a {
-    display: block;
-    padding: 10px 18px;
-    font-size: 13px;
+.dropdown-meny li + li {
+    border-top: 1px solid #333;
 }
 
-    .dropdown-meny a:hover {
-        background-color: #f5f5f5;
-    }
+.dropdown-meny a {
+    display: block;
+    padding: 12px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--hvit);
+    border-left: 3px solid transparent;
+}
+
+.dropdown-meny a::after {
+    display: none;
+}
+
+.dropdown-meny a:hover {
+    background-color: var(--svart-2);
+    color: var(--hvit);
+    border-left-color: var(--rod);
+}
 
 
 /* =====================================================
@@ -153,74 +246,181 @@ body {
    ===================================================== */
 
 .hero {
-    min-height: 650px;
+    position: relative;
+    /* Fyller hele den synlige skjermen under toppmenyen */
+    min-height: calc(100vh - var(--hoyde-nav));
     display: flex;
     align-items: center;
-    background: linear-gradient( rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55) ), url("../bilder/hero.jpg");
+    overflow: hidden;
+    background:
+        linear-gradient(120deg, rgba(8, 8, 8, 0.86) 0%, rgba(8, 8, 8, 0.62) 50%, rgba(8, 8, 8, 0.82) 100%),
+        url("../bilder/hero.jpg");
     background-size: cover;
     background-position: center;
 }
 
+/* Diagonal racing-stripe gjennom hero-bakgrunnen */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg,
+        transparent 0%, transparent 62%,
+        rgba(255, 255, 255, 0.06) 62%, rgba(255, 255, 255, 0.06) 64%,
+        transparent 64%, transparent 70%,
+        var(--rod) 70%, var(--rod) 70.6%,
+        transparent 70.6%);
+    pointer-events: none;
+}
+
+/* Hjørnemarkør øverst til høyre - samme visuelle språk som knapper/kort */
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 44px;
+    right: 44px;
+    width: 46px;
+    height: 46px;
+    border-top: 2px solid var(--rod);
+    border-right: 2px solid var(--rod);
+    pointer-events: none;
+}
+
+@media (max-width: 700px) {
+    .hero::after {
+        display: none;
+    }
+}
+
 
 .hero-innhold {
+    position: relative;
+    z-index: 1;
     max-width: 1300px;
     width: 100%;
     margin: auto;
     padding: 100px 30px;
-    color: #ffffff;
+    color: var(--hvit);
 }
 
 
 .overtekst,
 .seksjon-overtekst {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 3px;
-    margin-bottom: 15px;
-    color: #777777;
+    margin-bottom: 18px;
+    color: var(--gra);
+}
+
+.overtekst::before,
+.seksjon-overtekst::before {
+    content: "";
+    width: 18px;
+    height: 2px;
+    background-color: var(--rod);
 }
 
 .hero .overtekst {
-    color: #cccccc;
+    color: #cfcfcf;
 }
 
 
 .hero h1 {
-    font-size: clamp(50px, 8vw, 100px);
-    line-height: 1;
-    margin-bottom: 30px;
+    font-size: clamp(50px, 7.5vw, 98px);
+    line-height: 0.98;
+    letter-spacing: -1.5px;
+    margin-bottom: 28px;
     font-weight: 800;
 }
 
     .hero h1 span {
         display: block;
-        color: #cccccc;
+        color: #cfcfcf;
     }
 
 
 .hero-tekst {
     max-width: 600px;
     font-size: 18px;
-    color: #dddddd;
-    margin-bottom: 35px;
+    color: #d8d8d8;
+    margin-bottom: 40px;
 }
 
 
-/* Knapp */
+/* Knapper - parallellogram, klassisk racing-form */
+
+.hero-knapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+}
 
 .hovedknapp {
+    position: relative;
+    isolation: isolate; /* egen stacking-context, så pseudo-elementene alltid legger seg riktig i forhold til teksten */
     display: inline-block;
-    padding: 14px 28px;
-    background-color: #ffffff;
-    color: #111111;
+    padding: 15px 34px;
+    background-color: transparent;
+    color: var(--svart);
     text-decoration: none;
+    font-size: 13px;
     font-weight: 700;
-    font-size: 14px;
-    transition: 0.2s ease;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    border: 1px solid var(--hvit);
+    clip-path: polygon(16px 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
+    transition: color 0.2s ease, border-color 0.2s ease;
 }
 
+    /* Hvit "hvile"-bunn - ligger nederst */
+    .hovedknapp::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: var(--hvit);
+        z-index: -2;
+    }
+
+    /* Rød flate som ligger skjult til venstre og sklir inn ved hover.
+       clip-path på selve knappen klipper også denne, så den følger
+       parallellogram-formen og gir et diagonalt "wipe" inn i rødt. */
+    .hovedknapp::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: var(--rod);
+        transform: translateX(-100%);
+        transition: transform 0.35s ease;
+        z-index: -1;
+    }
+
     .hovedknapp:hover {
-        background-color: #dddddd;
+        color: var(--hvit);
+        border-color: var(--rod);
+    }
+
+    .hovedknapp:hover::after {
+        transform: translateX(0);
+    }
+
+/* Andre knapp i hero blir en tydelig sekundærvariant (outline) - uten å røre HTML */
+.hero-knapper .hovedknapp:nth-of-type(2) {
+    color: var(--hvit);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+    /* Outline-varianten har ingen hvit hvile-bunn - bakgrunnen skal skinne gjennom til røden sklir inn */
+    .hero-knapper .hovedknapp:nth-of-type(2)::before {
+        background-color: transparent;
+    }
+
+    .hero-knapper .hovedknapp:nth-of-type(2):hover {
+        border-color: var(--rod);
     }
 
 
@@ -236,37 +436,63 @@ body {
 
     .innhold h2 {
         font-size: 42px;
-        line-height: 1.1;
-        margin-bottom: 25px;
+        line-height: 1.08;
+        letter-spacing: -0.8px;
+        margin-bottom: 26px;
     }
 
     .innhold p {
         max-width: 800px;
-        color: #555555;
+        color: var(--gra-mork);
         margin-bottom: 20px;
     }
 
+    .innhold p a {
+        color: var(--svart);
+        text-decoration: none;
+        border-bottom: 1px solid var(--rod);
+        transition: color 0.2s ease;
+    }
+
+        .innhold p a:hover {
+            color: var(--rod);
+        }
+
     .oppdrag-liste {
         margin: 20px 0 32px;
-        padding-left: 22px;
+        padding-left: 0;
+        list-style: none;
     }
-    
+
     .oppdrag-liste li {
-        color: #555555;
+        position: relative;
+        color: var(--gra-mork);
         margin-bottom: 14px;
+        padding-left: 24px;
         line-height: 1.6;
     }
-    
+
+    .oppdrag-liste li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 9px;
+        width: 8px;
+        height: 2px;
+        background-color: var(--rod);
+    }
+
     .oppdrag-liste li:last-child {
         margin-bottom: 0;
     }
 
+
 /* =====================================================
-   FOKUSOMR�DER
+   FOKUSOMRÅDER
    ===================================================== */
 
 .fokus {
-    background-color: #f7f7f7;
+    background-color: var(--gra-lysest);
 }
 
 .fokus-kort {
@@ -277,18 +503,55 @@ body {
 }
 
 .kort {
-    background-color: #ffffff;
-    padding: 35px;
-    border: 1px solid #eeeeee;
+    position: relative;
+    background-color: var(--hvit);
+    padding: 36px 35px 32px;
+    border: 1px solid var(--gra-lys);
+    transition: border-color 0.2s ease;
 }
+
+    /* Hjørnemarkører i samme stil som knappene - gjennomgående visuelt språk */
+    .kort::before,
+    .kort::after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-color: var(--svart);
+        border-style: solid;
+        transition: border-color 0.2s ease;
+    }
+
+    .kort::before {
+        top: -1px;
+        left: -1px;
+        border-width: 2px 0 0 2px;
+    }
+
+    .kort::after {
+        bottom: -1px;
+        right: -1px;
+        border-width: 0 2px 2px 0;
+    }
+
+    .kort:hover {
+        border-color: var(--gra-lys);
+    }
+
+    .kort:hover::before,
+    .kort:hover::after {
+        border-color: var(--rod);
+    }
 
     .kort h3 {
         margin-bottom: 12px;
         font-size: 20px;
+        letter-spacing: -0.2px;
     }
 
     .kort p {
         font-size: 14px;
+        color: var(--gra-mork);
         margin: 0;
     }
 
@@ -298,15 +561,16 @@ body {
    ===================================================== */
 
 .bunntekst {
-    background-color: #111111;
-    color: #ffffff;
-    padding: 35px 30px;
+    background-color: var(--svart-2);
+    color: var(--hvit);
+    padding: 38px 30px;
     text-align: center;
+    border-top: 3px solid var(--rod);
 }
 
     .bunntekst p {
         font-size: 13px;
-        color: #aaaaaa;
+        color: #a3a3a3;
         margin: 5px 0;
     }
 
@@ -321,6 +585,7 @@ body {
         flex-direction: column;
         gap: 20px;
         padding: 20px;
+        min-height: auto;
     }
 
     .meny {
@@ -334,7 +599,7 @@ body {
         }
 
     .hero {
-        min-height: 550px;
+        min-height: 100svh;
     }
 
     .fokus-kort {
@@ -346,23 +611,32 @@ body {
 @media (max-width: 600px) {
 
     .hero h1 {
-        font-size: 50px;
+        font-size: 48px;
     }
 
     .hero-tekst {
         font-size: 16px;
     }
 
+    .hero-knapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+        .hero-knapper .hovedknapp {
+            text-align: center;
+            clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+        }
+
     .innhold {
         padding: 70px 20px;
     }
 
         .innhold h2 {
-            font-size: 32px;
+            font-size: 30px;
         }
 
-    .r�d {
-        color: #d71920;
+    .rod {
+        color: var(--rod);
     }
 }
-

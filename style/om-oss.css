@@ -1,7 +1,8 @@
-/* OM OSS – INTRODUKSJON */
+/* OM OSS ï¿½ INTRODUKSJON */
 
 .om-oss-introduksjon {
-    background-color: #f7f7f7;
+    background-color: var(--gra-lysest);
+    border-bottom: 1px solid var(--gra-lys);
 }
 
 .om-oss-innhold {
@@ -11,11 +12,21 @@
 }
 
 .om-oss-overtekst {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 3px;
-    color: #777777;
+    color: var(--gra);
     margin-bottom: 20px;
+}
+
+.om-oss-overtekst::before {
+    content: "";
+    width: 18px;
+    height: 2px;
+    background-color: var(--rod);
 }
 
 .om-oss-innhold h1 {
@@ -23,12 +34,14 @@
     line-height: 1;
     margin-bottom: 35px;
     font-weight: 800;
+    letter-spacing: -3px;
+    color: var(--svart);
 }
 
 .om-oss-introtekst {
     max-width: 700px;
     font-size: 19px;
-    color: #555555;
+    color: var(--gra-mork);
     line-height: 1.7;
 }
 
@@ -36,7 +49,7 @@
 /* TEAM */
 
 .team {
-    background-color: #ffffff;
+    background-color: var(--hvit);
 }
 
 .team-innhold {
@@ -53,16 +66,17 @@
     margin-bottom: 70px;
 }
 
-    .team-topp h2 {
-        font-size: clamp(38px, 5vw, 65px);
-        line-height: 1.05;
-        margin-bottom: 25px;
-    }
+.team-topp h2 {
+    font-size: clamp(38px, 5vw, 65px);
+    line-height: 1.05;
+    margin-bottom: 25px;
+    letter-spacing: -1.5px;
+}
 
-    .team-topp > p:last-child {
-        color: #666666;
-        max-width: 600px;
-    }
+.team-topp > p:last-child {
+    color: var(--gra-mork);
+    max-width: 600px;
+}
 
 
 /* PERSONER */
@@ -77,37 +91,63 @@
 /* Personkort */
 
 .personkort {
-    border: 1px solid #e8e8e8;
-    background-color: #ffffff;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    border: 1px solid var(--gra-lys);
+    background-color: var(--hvit);
+    transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-    .personkort:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.07);
-    }
+.personkort::before,
+.personkort::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: var(--svart);
+    border-style: solid;
+    transition: border-color 0.2s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.personkort::before {
+    top: -1px;
+    left: -1px;
+    border-width: 2px 0 0 2px;
+}
+
+.personkort::after {
+    bottom: -1px;
+    right: -1px;
+    border-width: 0 2px 2px 0;
+}
+
+.personkort:hover {
+    transform: translateY(-4px);
+    border-color: var(--gra-lys);
+}
+
+.personkort:hover::before,
+.personkort:hover::after {
+    border-color: var(--rod);
+}
 
 
-/* =====================================================
-   PERSONBILDE
-   ===================================================== */
+/* Personbildet */
 
 .personbilde {
     width: 100%;
     height: 420px;
-    background-color: #eeeeee;
+    background-color: var(--gra-lys);
     overflow: hidden;
 }
 
-
-    /* Selve bildet */
-
-    .personbilde img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
+.personbilde img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
 
 /* PERSONINFORMASJON */
@@ -117,31 +157,43 @@
 }
 
 .personnummer {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 2px;
-    color: #999999;
+    color: var(--gra);
     margin-bottom: 10px;
+}
+
+.personnummer::before {
+    content: "";
+    width: 12px;
+    height: 2px;
+    background-color: var(--rod);
 }
 
 .personinformasjon h3 {
     font-size: 28px;
     margin-bottom: 15px;
+    letter-spacing: -0.5px;
 }
 
 .personinformasjon p:last-child {
     font-size: 14px;
-    color: #666666;
+    color: var(--gra-mork);
     line-height: 1.7;
     margin: 0;
 }
 
 
-/* FELLES MÅL */
+/* FELLES Mï¿½L */
 
 .felles-mal {
-    background-color: #111111;
-    color: #ffffff;
+    background-color: var(--svart-2);
+    color: var(--hvit);
+    border-top: 3px solid var(--rod);
 }
 
 .felles-mal-innhold {
@@ -151,18 +203,19 @@
 }
 
 .felles-mal .om-oss-overtekst {
-    color: #888888;
+    color: var(--gra);
 }
 
 .felles-mal h2 {
     font-size: clamp(42px, 6vw, 75px);
     line-height: 1;
     margin-bottom: 35px;
+    letter-spacing: -2px;
 }
 
 .felles-mal p:last-child {
     max-width: 650px;
-    color: #aaaaaa;
+    color: #b5b5b5;
     font-size: 17px;
     line-height: 1.7;
 }

@@ -1,35 +1,46 @@
 /* Introduksjon */
 
 .refleksjon-intro {
-    background: #f7f7f7;
-    border-bottom: 1px solid #eee;
+    background-color: var(--gra-lysest);
+    border-bottom: 1px solid var(--gra-lys);
 }
 
-    .refleksjon-intro > div {
-        max-width: 1100px;
-        margin: auto;
-        padding: 150px 30px 110px;
-    }
+.refleksjon-intro > div {
+    max-width: 1100px;
+    margin: auto;
+    padding: 150px 30px 110px;
+}
 
 .refleksjon-overtekst {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     margin-bottom: 20px;
-    color: #777;
+    color: var(--gra);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 3px;
 }
 
+.refleksjon-overtekst::before {
+    content: "";
+    width: 18px;
+    height: 2px;
+    background-color: var(--rod);
+}
+
 .refleksjon-intro h1 {
     margin: 0 0 35px;
-    color: #111;
+    color: var(--svart);
     font-size: clamp(55px, 8vw, 95px);
     line-height: .95;
-    letter-spacing: -4px;
+    letter-spacing: -3px;
+    font-weight: 800;
 }
 
 .refleksjon-intro p:last-child {
     max-width: 650px;
-    color: #555;
+    color: var(--gra-mork);
     font-size: 18px;
     line-height: 1.7;
 }
@@ -44,49 +55,74 @@
 }
 
 .refleksjon-del {
+    position: relative;
     display: grid;
     grid-template-columns: 60px 1fr;
     gap: 25px;
     padding: 70px 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--gra-lys);
 }
 
-    .refleksjon-del > span {
-        color: #999;
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 2px;
-    }
+.refleksjon-del::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 70px;
+    width: 2px;
+    height: 24px;
+    background-color: var(--rod);
+}
 
-    .refleksjon-del h2 {
-        margin: 0 0 25px;
-        color: #111;
-        font-size: 32px;
-        font-weight: 600;
-    }
+.refleksjon-del > span {
+    color: var(--gra);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
 
-    .refleksjon-del p {
-        max-width: 750px;
-        margin: 0 0 20px;
-        color: #555;
-        font-size: 16px;
-        line-height: 1.8;
-    }
+.refleksjon-del h2 {
+    margin: 0 0 25px;
+    color: var(--svart);
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.refleksjon-del p {
+    max-width: 750px;
+    margin: 0 0 20px;
+    color: var(--gra-mork);
+    font-size: 16px;
+    line-height: 1.8;
+}
 
 
 /* Avslutning */
 
 .refleksjon-slutt {
+    position: relative;
     padding: 120px 0 40px;
 }
 
-    .refleksjon-slutt h2 {
-        margin: 0;
-        color: #111;
-        font-size: clamp(40px, 6vw, 70px);
-        line-height: 1;
-        letter-spacing: -2px;
-    }
+.refleksjon-slutt::before {
+    content: "";
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 46px;
+    height: 46px;
+    border-top: 2px solid var(--rod);
+    border-left: 2px solid var(--rod);
+}
+
+.refleksjon-slutt h2 {
+    margin: 0;
+    color: var(--svart);
+    font-size: clamp(40px, 6vw, 70px);
+    line-height: 1;
+    letter-spacing: -2px;
+    font-weight: 800;
+}
 
 
 /* Mobil */
@@ -99,7 +135,7 @@
 
     .refleksjon-intro h1 {
         font-size: 55px;
-        letter-spacing: -3px;
+        letter-spacing: -2px;
     }
 
     .refleksjon {
@@ -112,15 +148,23 @@
         padding: 50px 0;
     }
 
-        .refleksjon-del h2 {
-            font-size: 26px;
-        }
+    .refleksjon-del::before {
+        top: 50px;
+    }
 
-        .refleksjon-del p {
-            font-size: 15px;
-        }
+    .refleksjon-del h2 {
+        font-size: 26px;
+    }
+
+    .refleksjon-del p {
+        font-size: 15px;
+    }
 
     .refleksjon-slutt {
         padding-top: 90px;
+    }
+
+    .refleksjon-slutt::before {
+        top: 55px;
     }
 }
