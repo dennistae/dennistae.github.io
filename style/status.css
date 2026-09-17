@@ -229,3 +229,25 @@
         top: 60px;
     }
 }
+
+.status-skjermbilder img {
+    height: 200px;
+    margin-bottom: 0;
+}
+
+.status-skjermbilder .row{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    margin-bottom: 10px;
+}
+
+.status-skjermbilder figcaption {
+    color: rgb(97, 97, 97);
+    font-weight: 600;
+    margin-top: -5px;
+}
+
+.status-skjermbilder .tabell-bilde {
+    height: 100px;
+}
