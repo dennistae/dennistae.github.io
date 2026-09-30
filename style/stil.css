@@ -37,6 +37,12 @@ body {
     background-color: var(--hvit);
     color: var(--svart);
     line-height: 1.6;
+    overflow-x: hidden;
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
 }
 
 :focus-visible {
@@ -96,10 +102,53 @@ body {
     flex-shrink: 0;
 }
 
-.logo span {
+.logo-tekst span {
     margin-left: -3px;
     color: #cfcfcf;
     font-weight: 700;
+}
+
+
+/* Hamburger-knapp (kun synlig på mobil/nettbrett) */
+
+.meny-knapp {
+    display: none;
+    position: relative;
+    width: 26px;
+    height: 18px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1100;
+    flex-shrink: 0;
+}
+
+.meny-linje {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--hvit);
+    transition: top 0.2s ease, transform 0.2s ease, opacity 0.15s ease;
+}
+
+.meny-linje:nth-child(1) { top: 0; }
+.meny-linje:nth-child(2) { top: 8px; }
+.meny-linje:nth-child(3) { top: 16px; }
+
+.meny-knapp[aria-expanded="true"] .meny-linje:nth-child(1) {
+    top: 8px;
+    transform: rotate(45deg);
+}
+
+.meny-knapp[aria-expanded="true"] .meny-linje:nth-child(2) {
+    opacity: 0;
+}
+
+.meny-knapp[aria-expanded="true"] .meny-linje:nth-child(3) {
+    top: 8px;
+    transform: rotate(-45deg);
 }
 
 
@@ -181,7 +230,8 @@ body {
     border-top: 5px solid currentColor;
 }
 
-.dropdown:hover .pil {
+.dropdown:hover .pil,
+.dropdown.apen .pil {
     transform: rotate(180deg);
 }
 
@@ -576,27 +626,136 @@ body {
 
 
 /* =====================================================
+   MOBIL / NETTBRETT - NAVIGASJON
+   ===================================================== */
+
+/* Menyen med fem punkter blir for trang for logoen under 1200px,
+   så hamburgermenyen tar over her - ikke først ved 900px. */
+
+@media (max-width: 1200px) {
+
+    .navigasjon {
+        padding: 0 20px;
+        flex-wrap: nowrap;
+    }
+
+    .logo {
+        min-width: 0;
+        gap: 8px;
+    }
+
+        .logo img {
+            width: 76px;
+            height: auto;
+        }
+
+        .logo-tekst {
+            display: none;
+        }
+
+    .meny-knapp {
+        display: block;
+    }
+
+    /* Fullskjerms mobilmeny - samme visuelle stil som resten av Smaragd Motorsport-prosjektet */
+
+    .meny {
+        position: fixed;
+        top: var(--hoyde-nav);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 0;
+        margin: 0;
+        padding: 10px 0 40px;
+        background-color: var(--svart);
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+    }
+
+    .meny.apen {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    body.meny-apen {
+        overflow: hidden;
+    }
+
+    .meny li {
+        position: static;
+        width: 100%;
+        border-top: 1px solid #262626;
+    }
+
+        .meny li:first-child {
+            border-top: none;
+        }
+
+    .meny a {
+        display: block;
+        width: 100%;
+        padding: 20px 30px;
+        font-size: 14px;
+        text-align: center;
+        letter-spacing: 1.5px;
+    }
+
+    .meny a::after {
+        left: 50%;
+        bottom: 11px;
+        transform: translateX(-50%);
+    }
+
+    .meny a.dropdown-knapp {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Dropdown vises som utvidbar liste i mobilmenyen i stedet for hover */
+
+    .dropdown-meny {
+        position: static;
+        min-width: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        border: none;
+        box-shadow: none;
+        background-color: var(--svart-2);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.22s ease;
+    }
+
+    .dropdown.apen .dropdown-meny {
+        max-height: 200px;
+    }
+
+    .dropdown-meny a {
+        padding: 16px 30px;
+        font-size: 12px;
+        color: #cfcfcf;
+    }
+}
+
+
+/* =====================================================
    MOBIL
    ===================================================== */
 
 @media (max-width: 900px) {
-
-    .navigasjon {
-        flex-direction: column;
-        gap: 20px;
-        padding: 20px;
-        min-height: auto;
-    }
-
-    .meny {
-        gap: 18px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-        .meny a {
-            font-size: 12px;
-        }
 
     .hero {
         min-height: 100svh;

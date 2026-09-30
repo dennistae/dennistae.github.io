@@ -27,11 +27,17 @@ const navbar = `
     <nav class="navigasjon">
 
         <a href="${rot}index.html" class="logo">
-            <img src="${rot}images/team/Firmabakgrunn.png" alt="Smaragd Motorsport logo">
-            SMARAGD <span>MOTORSPORT</span>
+            <img src="${rot}images/logo.png" alt="Smaragd Motorsport logo">
+            <span class="logo-tekst">SMARAGD <span>MOTORSPORT</span></span>
         </a>
 
-        <ul class="meny">
+        <button type="button" class="meny-knapp" id="meny-knapp" aria-label="Åpne meny" aria-expanded="false" aria-controls="hovedmeny">
+            <span class="meny-linje"></span>
+            <span class="meny-linje"></span>
+            <span class="meny-linje"></span>
+        </button>
+
+        <ul class="meny" id="hovedmeny">
 
             <li>
                 <a href="${htmlMappe}om-oss.html"
@@ -52,7 +58,7 @@ const navbar = `
                     class="${erAktivSide("prosjektdagbok.html") ? "aktiv" : ""}">
                     PROSJEKTDAGBOK
                 </a>
-            </li>           
+            </li>
 
             <li class="dropdown">
 
@@ -125,4 +131,62 @@ document.addEventListener("DOMContentLoaded", () => {
     // Footer nederst
     document.body.insertAdjacentHTML("beforeend", footer);
 
+    settOppMobilmeny();
+
 });
+
+
+/* Mobilmeny (hamburger-knapp + dropdown) */
+
+function settOppMobilmeny() {
+
+    const menyKnapp = document.getElementById("meny-knapp");
+    const meny = document.getElementById("hovedmeny");
+
+    if (!menyKnapp || !meny) return;
+
+    function lukkMeny() {
+        menyKnapp.setAttribute("aria-expanded", "false");
+        meny.classList.remove("apen");
+        document.body.classList.remove("meny-apen");
+    }
+
+    function apneMeny() {
+        menyKnapp.setAttribute("aria-expanded", "true");
+        meny.classList.add("apen");
+        document.body.classList.add("meny-apen");
+    }
+
+    menyKnapp.addEventListener("click", () => {
+        const erApen = menyKnapp.getAttribute("aria-expanded") === "true";
+        erApen ? lukkMeny() : apneMeny();
+    });
+
+    // Lukk meny når en lenke i menyen trykkes (utenom dropdown-knappen)
+    meny.querySelectorAll("a:not(.dropdown-knapp)").forEach((lenke) => {
+        lenke.addEventListener("click", lukkMeny);
+    });
+
+    // Lukk meny med Escape
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") lukkMeny();
+    });
+
+    // Lukk meny igjen dersom vinduet blir bredt nok til desktop-meny
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 1200) lukkMeny();
+    });
+
+    // Dropdown (statusrapport) - klikk for å utvide/lukke på mobil
+    const dropdown = meny.querySelector(".dropdown");
+    const dropdownKnapp = meny.querySelector(".dropdown-knapp");
+
+    if (dropdown && dropdownKnapp) {
+        dropdownKnapp.addEventListener("click", (event) => {
+            if (window.innerWidth <= 1200) {
+                event.preventDefault();
+                dropdown.classList.toggle("apen");
+            }
+        });
+    }
+}
