@@ -1,4 +1,4 @@
-/* OM OSS � INTRODUKSJON */
+/* OM OSS – INTRODUKSJON + TEAM (én samlet seksjon) */
 
 .om-oss-introduksjon {
     background-color: var(--gra-lysest);
@@ -6,9 +6,9 @@
 }
 
 .om-oss-innhold {
-    max-width: 1210px;
+    max-width: 1400px;
     margin: auto;
-    padding: 120px 30px 100px;
+    padding: 70px 30px 100px;
 }
 
 .om-oss-overtekst {
@@ -30,61 +30,30 @@
 }
 
 .om-oss-innhold h1 {
-    font-size: clamp(55px, 8vw, 100px);
+    font-size: clamp(42px, 5vw, 72px);
     line-height: 1;
-    margin-bottom: 35px;
+    margin-bottom: 22px;
     font-weight: 800;
-    letter-spacing: -3px;
+    letter-spacing: -2px;
     color: var(--svart);
 }
 
 .om-oss-introtekst {
     max-width: 700px;
-    font-size: 19px;
+    font-size: 17px;
     color: var(--gra-mork);
     line-height: 1.7;
-}
-
-
-/* TEAM */
-
-.team {
-    background-color: var(--hvit);
-}
-
-.team-innhold {
-    max-width: 1200px;
-    margin: auto;
-    padding: 110px 30px;
-}
-
-
-/* Topptekst for teamet */
-
-.team-topp {
-    max-width: 700px;
-    margin-bottom: 70px;
-}
-
-.team-topp h2 {
-    font-size: clamp(38px, 5vw, 65px);
-    line-height: 1.05;
-    margin-bottom: 25px;
-    letter-spacing: -1.5px;
-}
-
-.team-topp > p:last-child {
-    color: var(--gra-mork);
-    max-width: 600px;
 }
 
 
 /* PERSONER */
 
 .personer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 45px;
 }
 
 
@@ -92,6 +61,10 @@
 
 .personkort {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 235px;
+    max-width: 258px;
     border: 1px solid var(--gra-lys);
     background-color: var(--hvit);
     transition: transform 0.2s ease, border-color 0.2s ease;
@@ -137,9 +110,10 @@
 
 .personbilde {
     width: 100%;
-    height: 420px;
+    aspect-ratio: 1 / 1;
     background-color: var(--gra-lys);
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .personbilde img {
@@ -153,107 +127,140 @@
 /* PERSONINFORMASJON */
 
 .personinformasjon {
-    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 18px 20px 20px;
 }
 
-.personnummer {
+.personrolle {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 11px;
+    gap: 7px;
+    font-size: 10.5px;
     font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--gra);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--rod);
     margin-bottom: 10px;
 }
 
-.personnummer::before {
+.personrolle::before {
     content: "";
-    width: 12px;
+    width: 10px;
     height: 2px;
     background-color: var(--rod);
+    flex-shrink: 0;
 }
 
 .personinformasjon h3 {
-    font-size: 28px;
-    margin-bottom: 15px;
-    letter-spacing: -0.5px;
+    font-size: 17px;
+    margin-bottom: 6px;
+    letter-spacing: -0.2px;
 }
 
-.personinformasjon p:last-child {
-    font-size: 14px;
+.personinformasjon p:not(.personrolle) {
+    font-size: 12.5px;
     color: var(--gra-mork);
-    line-height: 1.7;
+    line-height: 1.6;
     margin: 0;
 }
 
 
-/* FELLES M�L */
+/* Lenker: GitHub / LinkedIn (trykkbare logoer) */
 
-.felles-mal {
-    background-color: var(--svart-2);
+.personlenker {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--gra-lys);
+}
+
+.personlenker a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--gra-lys);
+    color: var(--svart);
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.personlenker a svg {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+}
+
+.personlenker a:hover {
+    background-color: var(--rod);
+    border-color: var(--rod);
     color: var(--hvit);
-    border-top: 3px solid var(--rod);
 }
 
-.felles-mal-innhold {
-    max-width: 1100px;
-    margin: auto;
-    padding: 120px 30px;
-}
 
-.felles-mal .om-oss-overtekst {
+/* Lenke til gruppens egen nettside */
+
+.persongruppe {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: 600;
     color: var(--gra);
+    text-decoration: none;
+    transition: color 0.15s ease;
 }
 
-.felles-mal h2 {
-    font-size: clamp(42px, 6vw, 75px);
-    line-height: 1;
-    margin-bottom: 35px;
-    letter-spacing: -2px;
-}
-
-.felles-mal p:last-child {
-    max-width: 650px;
-    color: #b5b5b5;
-    font-size: 17px;
-    line-height: 1.7;
+.persongruppe:hover {
+    color: var(--rod);
 }
 
 
 /* MOBIL */
 
-@media (max-width: 800px) {
-
-    .personer {
-        grid-template-columns: 1fr;
-    }
-
-    .personbilde {
-        height: 450px;
-    }
-}
-
-
 @media (max-width: 600px) {
 
     .om-oss-innhold {
-        padding: 80px 20px;
+        padding: 60px 20px 70px;
     }
 
-    .team-innhold {
-        padding: 80px 20px;
+    .personer {
+        gap: 20px;
+        margin-top: 35px;
     }
 
-    .felles-mal-innhold {
-        padding: 80px 20px;
+    .personkort {
+        flex-basis: 100%;
+        max-width: 380px;
     }
 
     .personbilde {
-        height: 400px;
+        aspect-ratio: 4 / 5;
     }
 
     .personinformasjon {
-        padding: 25px;
+        padding: 22px 24px 26px;
+    }
+
+    .personinformasjon h3 {
+        font-size: 20px;
+    }
+
+    .personinformasjon p:not(.personrolle) {
+        font-size: 14px;
+    }
+
+    .personlenker a {
+        width: 36px;
+        height: 36px;
+    }
+
+    .personlenker a svg {
+        width: 17px;
+        height: 17px;
     }
 }
