@@ -172,7 +172,7 @@ img, video {
     color: var(--hvit);
     font-size: 13px;
     font-weight: 700;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.6px;
     padding: 8px 2px;
     transition: color 0.15s ease;
 }
@@ -189,7 +189,7 @@ img, video {
 }
 
 .meny a:hover {
-    color: var(--hvit);
+    color: var(--rod);
 }
 
 .meny a.aktiv::after {
@@ -508,6 +508,56 @@ img, video {
             color: var(--rod);
         }
 
+
+/* Introduksjon på forsiden - tekst + bilde side om side */
+
+.introduksjon-innhold {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.introduksjon-tekst p {
+    max-width: 560px;
+}
+
+.introduksjon-bilde {
+    position: relative;
+    aspect-ratio: 2 / 3;
+}
+
+    .introduksjon-bilde img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .introduksjon-bilde::before,
+    .introduksjon-bilde::after {
+        content: "";
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        border-color: var(--rod);
+        border-style: solid;
+        pointer-events: none;
+    }
+
+    .introduksjon-bilde::before {
+        top: -2px;
+        left: -2px;
+        border-width: 3px 0 0 3px;
+    }
+
+    .introduksjon-bilde::after {
+        bottom: -2px;
+        right: -2px;
+        border-width: 0 3px 3px 0;
+    }
+
+
     .oppdrag-liste {
         margin: 20px 0 32px;
         padding-left: 0;
@@ -613,15 +663,125 @@ img, video {
 .bunntekst {
     background-color: var(--svart-2);
     color: var(--hvit);
-    padding: 38px 30px;
-    text-align: center;
+    padding: 70px 30px 0;
     border-top: 3px solid var(--rod);
 }
 
-    .bunntekst p {
-        font-size: 13px;
-        color: #a3a3a3;
-        margin: 5px 0;
+.bunntekst-innhold {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px 60px;
+    padding-bottom: 46px;
+}
+
+
+/* Om / merkevare */
+
+.bunntekst-om {
+    max-width: 460px;
+}
+
+.bunntekst-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--hvit);
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    margin-bottom: 22px;
+}
+
+    .bunntekst-logo span {
+        margin-left: -4px;
+        color: #cfcfcf;
+        font-weight: 700;
+    }
+
+    .bunntekst-logo img {
+        width: 104px;
+        height: 36px;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+.bunntekst-prosjekt {
+    font-size: 14px;
+    color: #d8d8d8;
+    font-weight: 600;
+    margin: 0 0 12px;
+}
+
+.bunntekst-navn {
+    font-size: 13px;
+    color: #8a8a8a;
+    line-height: 1.7;
+    margin: 0;
+}
+
+
+/* Hurtiglenker */
+
+.bunntekst-lenker {
+    min-width: 180px;
+}
+
+.bunntekst-lenker .bunntekst-overskrift {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #808080;
+    margin: 0 0 20px;
+}
+
+.bunntekst-lenker .bunntekst-overskrift::before {
+    content: "";
+    width: 14px;
+    height: 2px;
+    background-color: var(--rod);
+    flex-shrink: 0;
+}
+
+.bunntekst-lenker ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bunntekst-lenker a {
+    font-size: 13px;
+    color: #cfcfcf;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+    .bunntekst-lenker a:hover {
+        color: var(--rod);
+    }
+
+
+/* Bunnlinje */
+
+.bunntekst-bunnlinje {
+    border-top: 1px solid #262626;
+}
+
+    .bunntekst-bunnlinje p {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 22px 30px;
+        font-size: 12px;
+        color: #777;
+        text-align: left;
     }
 
 
@@ -764,6 +924,28 @@ img, video {
     .fokus-kort {
         grid-template-columns: 1fr;
     }
+
+    .introduksjon-innhold {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .introduksjon-innhold .introduksjon-bilde {
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .introduksjon-tekst p {
+        max-width: none;
+    }
+
+    .bunntekst-innhold {
+        gap: 36px;
+    }
+
+    .bunntekst-om {
+        max-width: none;
+    }
 }
 
 
@@ -797,5 +979,13 @@ img, video {
 
     .rod {
         color: var(--rod);
+    }
+
+    .bunntekst {
+        padding-top: 50px;
+    }
+
+    .bunntekst-innhold {
+        padding-bottom: 36px;
     }
 }

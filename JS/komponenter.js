@@ -109,13 +109,50 @@ const footer = `
 <!-- Bunntekst -->
     <footer class="bunntekst">
 
-        <p>
-            © 2026 Praksisprosjekt – Smaragd Motorsport
-        </p>
+        <div class="bunntekst-innhold">
 
-        <p>
-            Mohammed Liban Osman · Noa Vincent Nordén · Dennis Tea · Efe Kaan Eksi · Marius Khiem Nguyen
-        </p>
+            <div class="bunntekst-om">
+
+                <div class="bunntekst-logo">
+                    <img src="${rot}images/logo.png" alt="Smaragd Motorsport logo">
+                    SMARAGD <span>MOTORSPORT</span>
+                </div>
+
+                <p class="bunntekst-prosjekt">
+                    IS-302 Praksisprosjekt · Gruppe 27
+                </p>
+
+                <p class="bunntekst-navn">
+                    Mohamed Liban Osman · Noa Vincent Nordén · Dennis Tea · Efe Kaan Eksi · Marius Khiem Nguyen
+                </p>
+
+            </div>
+
+            <nav class="bunntekst-lenker" aria-label="Hurtiglenker">
+
+                <p class="bunntekst-overskrift">
+                    HURTIGLENKER
+                </p>
+
+                <ul>
+                    <li><a href="${rot}index.html">Hjem</a></li>
+                    <li><a href="${htmlMappe}om-oss.html">Om oss</a></li>
+                    <li><a href="${htmlMappe}oppgavebeskrivelse.html">Oppgave</a></li>
+                    <li><a href="${htmlMappe}prosjektdagbok.html">Prosjektdagbok</a></li>
+                    <li><a href="${htmlMappe}status-1.html">Statusrapport 1</a></li>
+                    <li><a href="${htmlMappe}status-2.html">Statusrapport 2</a></li>
+                    <li><a href="${htmlMappe}avsluttende-refleksjon.html">Avsluttende refleksjon</a></li>
+                </ul>
+
+            </nav>
+
+        </div>
+
+        <div class="bunntekst-bunnlinje">
+            <p>
+                © 2026 IS-302 Praksisprosjekt – Smaragd Motorsport
+            </p>
+        </div>
 
     </footer>
 `;
