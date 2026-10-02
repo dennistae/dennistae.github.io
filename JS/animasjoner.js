@@ -34,6 +34,7 @@
 
     function startReveal() {
         if (!("IntersectionObserver" in window)) {
+            document.documentElement.classList.remove("anim");
             return;
         }
 
@@ -59,6 +60,7 @@
         // (som også bruker transform) fungerer som normalt etterpå
         function ryddOpp(el) {
             el.classList.remove("reveal", "reveal-visible");
+            el.classList.add("reveal-ferdig");
             el.style.animationDelay = "";
         }
 

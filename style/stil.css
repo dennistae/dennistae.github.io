@@ -1148,6 +1148,29 @@ body.lysboks-apen {
 
 @media (prefers-reduced-motion: no-preference) {
 
+    /* Skjul elementene med en gang (før JS har kjørt), slik at de ikke blinker.
+       Klassen "anim" settes tidlig i <head>. Samme liste som i JS/animasjoner.js. */
+    html.anim :is(
+        .hero-innhold > *,
+        .dagbok-introduksjon-innhold > *,
+        .om-oss-innhold > h1,
+        .om-oss-overtekst,
+        .om-oss-introtekst,
+        .status-intro > div > *,
+        .refleksjon-intro > div > *,
+        .innhold > *,
+        .kort,
+        .personkort,
+        .uke,
+        .status-innhold > *,
+        .status-skjermbilder figure,
+        .refleksjon-del,
+        .refleksjon-slutt
+    ):not(.reveal-ferdig) {
+        opacity: 0;
+        transform: translateY(-18px);
+    }
+
     /* Elementer glir ned på plass (settes av JS/animasjoner.js) */
     .reveal.reveal {
         opacity: 0;
