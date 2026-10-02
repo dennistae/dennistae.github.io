@@ -45,6 +45,10 @@ img, video {
     height: auto;
 }
 
+body.lysboks-apen {
+    overflow: hidden;
+}
+
 :focus-visible {
     outline: 2px solid var(--rod);
     outline-offset: 3px;
@@ -654,6 +658,102 @@ img, video {
         color: var(--gra-mork);
         margin: 0;
     }
+
+
+/* =====================================================
+   LYSBOKS (bildevisning i fullskjerm)
+   ===================================================== */
+
+.lysboks {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 70px 110px;
+    background-color: rgba(10, 10, 10, 0.92);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.lysboks.apen {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lysboks img {
+    max-width: min(880px, 100%);
+    max-height: 72vh;
+    display: block;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lysboks-lukk {
+    position: absolute;
+    top: 24px;
+    right: 30px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: none;
+    color: var(--hvit);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.lysboks-lukk:hover {
+    background-color: var(--rod);
+    border-color: var(--rod);
+}
+
+.lysboks-pil {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: none;
+    color: var(--hvit);
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.lysboks-pil:hover {
+    background-color: var(--rod);
+    border-color: var(--rod);
+}
+
+.lysboks-forrige {
+    left: 30px;
+}
+
+.lysboks-neste {
+    right: 30px;
+}
+
+@media (max-width: 700px) {
+
+    .lysboks {
+        padding: 70px 24px;
+    }
+
+    .lysboks-pil {
+        display: none;
+    }
+}
 
 
 /* =====================================================

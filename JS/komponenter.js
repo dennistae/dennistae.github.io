@@ -62,7 +62,7 @@ const navbar = `
 
             <li class="dropdown">
 
-                <a href="#"
+                <a href="${htmlMappe}status-1.html"
                     class="dropdown-knapp ${erAktivSide("status-1.html", "status-2.html") ? "aktiv" : ""}">
                     STATUSRAPPORT
                     <span class="pil">⌄</span>
@@ -169,8 +169,110 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.insertAdjacentHTML("beforeend", footer);
 
     settOppMobilmeny();
+    settOppLysboks();
 
 });
+
+
+/* Lysboks (forstørret bildevisning) */
+
+function settOppLysboks() {
+
+    const bilder = [...document.querySelectorAll(".status-skjermbilder img")];
+
+    if (!bilder.length) return;
+
+    const flereBilder = bilder.length > 1;
+    let indeks = 0;
+
+    const lysboks = document.createElement("div");
+    lysboks.className = "lysboks";
+    lysboks.innerHTML = `
+        <button type="button" class="lysboks-lukk" aria-label="Lukk bildevisning">&times;</button>
+        ${flereBilder ? `
+            <button type="button" class="lysboks-pil lysboks-forrige" aria-label="Forrige bilde">&#8249;</button>
+            <button type="button" class="lysboks-pil lysboks-neste" aria-label="Neste bilde">&#8250;</button>
+        ` : ""}
+        <img src="" alt="">
+    `;
+    document.body.appendChild(lysboks);
+
+    const lysboksBilde = lysboks.querySelector("img");
+    const lukkKnapp = lysboks.querySelector(".lysboks-lukk");
+    const forrigeKnapp = lysboks.querySelector(".lysboks-forrige");
+    const nesteKnapp = lysboks.querySelector(".lysboks-neste");
+
+    function visBilde(nyIndeks) {
+        indeks = (nyIndeks + bilder.length) % bilder.length;
+        lysboksBilde.src = bilder[indeks].src;
+        lysboksBilde.alt = bilder[indeks].alt;
+    }
+
+    function apneLysboks(startIndeks) {
+        visBilde(startIndeks);
+        lysboks.classList.add("apen");
+        document.body.classList.add("lysboks-apen");
+    }
+
+    function lukkLysboks() {
+        lysboks.classList.remove("apen");
+        document.body.classList.remove("lysboks-apen");
+    }
+
+    function nesteBilde() {
+        visBilde(indeks + 1);
+    }
+
+    function forrigeBilde() {
+        visBilde(indeks - 1);
+    }
+
+    bilder.forEach((bilde, i) => {
+        bilde.addEventListener("click", () => apneLysboks(i));
+    });
+
+    // Lukk ved klikk utenfor bildet, men ikke på selve bildet
+    lysboks.addEventListener("click", (event) => {
+        if (event.target === lysboks) lukkLysboks();
+    });
+
+    lukkKnapp.addEventListener("click", lukkLysboks);
+
+    if (forrigeKnapp) forrigeKnapp.addEventListener("click", forrigeBilde);
+    if (nesteKnapp) nesteKnapp.addEventListener("click", nesteBilde);
+
+    // Tastatur: Esc lukker, piltaster bytter bilde
+    document.addEventListener("keydown", (event) => {
+        if (!lysboks.classList.contains("apen")) return;
+
+        if (event.key === "Escape") lukkLysboks();
+        if (flereBilder && event.key === "ArrowRight") nesteBilde();
+        if (flereBilder && event.key === "ArrowLeft") forrigeBilde();
+    });
+
+    // Swipe på mobil
+    if (flereBilder) {
+
+        let startX = 0;
+        let startY = 0;
+
+        lysboks.addEventListener("touchstart", (event) => {
+            startX = event.changedTouches[0].clientX;
+            startY = event.changedTouches[0].clientY;
+        }, { passive: true });
+
+        lysboks.addEventListener("touchend", (event) => {
+            const sluttX = event.changedTouches[0].clientX;
+            const sluttY = event.changedTouches[0].clientY;
+            const deltaX = sluttX - startX;
+            const deltaY = sluttY - startY;
+
+            if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+                deltaX < 0 ? nesteBilde() : forrigeBilde();
+            }
+        }, { passive: true });
+    }
+}
 
 
 /* Mobilmeny (hamburger-knapp + dropdown) */

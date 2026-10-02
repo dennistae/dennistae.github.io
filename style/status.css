@@ -42,11 +42,33 @@
     font-weight: 800;
 }
 
-.status-intro p:last-child {
+.status-intro-tekst {
     max-width: 650px;
     color: var(--gra-mork);
     font-size: 18px;
     line-height: 1.7;
+}
+
+.status-dato {
+    margin-top: 18px;
+    color: var(--gra);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* Merknad - "fylles ut senere" */
+
+.status-merknad {
+    display: inline-block;
+    max-width: 650px;
+    margin-top: 28px;
+    padding: 14px 22px;
+    border-left: 3px solid var(--rod);
+    background-color: var(--hvit);
+    color: var(--gra-mork);
+    font-size: 14px;
+    font-style: italic;
 }
 
 
@@ -62,43 +84,27 @@
 }
 
 .status-header {
-    display: grid;
-    grid-template-columns: 60px 1fr;
-    gap: 25px;
-    margin-bottom: 50px;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 28px;
 }
 
-.status-header span {
-    color: var(--gra);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
+.status-header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 3px;
+    height: 24px;
+    background-color: var(--rod);
 }
 
 .status-header h2 {
     margin: 0;
     color: var(--svart);
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
     letter-spacing: -0.5px;
-}
-
-
-/* =====================================================
-   STATUSLINJER
-   ===================================================== */
-
-.status-linje {
-    display: flex;
-    justify-content: space-between;
-    padding: 22px 0;
-    border-top: 1px solid var(--gra-lys);
-    color: var(--gra-mork);
-}
-
-.status-linje strong {
-    color: var(--svart);
-    font-weight: 600;
 }
 
 
@@ -108,7 +114,7 @@
 
 .status-tekst {
     max-width: 750px;
-    margin-left: 85px;
+    margin-left: 20px;
 }
 
 .status-tekst p {
@@ -118,68 +124,59 @@
     line-height: 1.8;
 }
 
-
-/* =====================================================
-   PUNKTER
-   ===================================================== */
-
-.status-punkter {
-    margin-left: 85px;
+.status-tekst p:last-child {
+    margin-bottom: 0;
 }
 
-.status-punkter p {
-    position: relative;
-    padding: 20px 0 20px 22px;
-    margin: 0;
-    border-top: 1px solid var(--gra-lys);
-    color: var(--gra-mork);
-    font-size: 16px;
-}
-
-.status-punkter p::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 30px;
-    width: 8px;
-    height: 2px;
-    background-color: var(--rod);
+.status-video video {
+    display: block;
+    width: 100%;
+    background-color: var(--gra-lysest);
 }
 
 
 /* =====================================================
-   AVSLUTNING
+   SKJERMBILDER
    ===================================================== */
 
-.status-avslutning {
-    position: relative;
-    padding-top: 120px;
-    padding-bottom: 140px;
+.status-skjermbilder {
+    margin-left: 20px;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
 }
 
-.status-avslutning::before {
-    content: "";
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 46px;
-    height: 46px;
-    border-top: 2px solid var(--rod);
-    border-left: 2px solid var(--rod);
+.status-skjermbilder .row {
+    display: contents;
 }
 
-.status-avslutning h2 {
-    margin: 0 0 30px;
-    color: var(--svart);
-    font-size: clamp(40px, 6vw, 70px);
-    line-height: 1;
-    letter-spacing: -2px;
-    font-weight: 800;
+.status-skjermbilder .col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.status-avslutning p:last-child {
-    color: var(--gra-mork);
-    font-size: 16px;
+.status-skjermbilder img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    background-color: var(--gra-lysest);
+    cursor: zoom-in;
+    transition: opacity 0.15s ease;
+}
+
+.status-skjermbilder img:hover {
+    opacity: 0.85;
+}
+
+.status-skjermbilder figcaption {
+    color: var(--gra);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 
@@ -202,59 +199,11 @@
         padding: 70px 20px;
     }
 
-    .status-header {
-        grid-template-columns: 40px 1fr;
-        gap: 15px;
-    }
-
     .status-header h2 {
-        font-size: 25px;
+        font-size: 22px;
     }
 
-    .status-tekst,
-    .status-punkter {
-        margin-left: 55px;
+    .status-skjermbilder {
+        grid-template-columns: 1fr;
     }
-
-    .status-linje {
-        gap: 20px;
-    }
-
-    .status-avslutning {
-        padding-top: 100px;
-        padding-bottom: 100px;
-    }
-
-    .status-avslutning::before {
-        top: 60px;
-    }
-}
-
-.status-skjermbilder img {
-    height: auto;
-    max-height: 200px;
-    max-width: 100%;
-    margin-bottom: 0;
-}
-
-.status-skjermbilder .row{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1em;
-    margin-bottom: 10px;
-}
-
-.status-skjermbilder .col {
-    max-width: 100%;
-}
-
-.status-skjermbilder figcaption {
-    color: rgb(97, 97, 97);
-    font-weight: 600;
-    margin-top: -5px;
-}
-
-.status-skjermbilder .tabell-bilde {
-    height: 100px;
 }
