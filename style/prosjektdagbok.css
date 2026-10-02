@@ -70,7 +70,8 @@
     border-bottom: 1px solid var(--gra-lys);
 }
 
-.uke summary {
+.uke summary,
+.uke-rad {
     position: relative;
     display: grid;
     grid-template-columns: 80px 1fr 40px;
@@ -136,6 +137,23 @@
     font-weight: 700;
     letter-spacing: -0.3px;
 }
+
+
+/* Uker som ikke er skrevet ennå */
+
+.uke-kommer {
+    --slutt-opacity: 0.55;
+    opacity: var(--slutt-opacity);
+}
+
+    .uke-kommer .uke-rad {
+        cursor: default;
+    }
+
+    .uke-kommer .uke-info h2 {
+        font-weight: 600;
+        font-style: italic;
+    }
 
 
 /* Pil */
@@ -214,7 +232,8 @@
         padding: 70px 20px 100px;
     }
 
-    .uke summary {
+    .uke summary,
+    .uke-rad {
         grid-template-columns: 45px 1fr 35px;
         gap: 15px;
         padding: 25px 5px;
@@ -235,7 +254,8 @@
 
 @media (max-width: 500px) {
 
-    .uke summary {
+    .uke summary,
+    .uke-rad {
         grid-template-columns: 35px 1fr 30px;
         gap: 10px;
     }

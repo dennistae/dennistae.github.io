@@ -37,6 +37,16 @@ body {
     background-color: var(--hvit);
     color: var(--svart);
     line-height: 1.6;
+    overflow-x: hidden;
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+body.lysboks-apen {
+    overflow: hidden;
 }
 
 :focus-visible {
@@ -96,10 +106,53 @@ body {
     flex-shrink: 0;
 }
 
-.logo span {
+.logo-tekst span {
     margin-left: -3px;
     color: #cfcfcf;
     font-weight: 700;
+}
+
+
+/* Hamburger-knapp (kun synlig på mobil/nettbrett) */
+
+.meny-knapp {
+    display: none;
+    position: relative;
+    width: 26px;
+    height: 18px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1100;
+    flex-shrink: 0;
+}
+
+.meny-linje {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--hvit);
+    transition: top 0.2s ease, transform 0.2s ease, opacity 0.15s ease;
+}
+
+.meny-linje:nth-child(1) { top: 0; }
+.meny-linje:nth-child(2) { top: 8px; }
+.meny-linje:nth-child(3) { top: 16px; }
+
+.meny-knapp[aria-expanded="true"] .meny-linje:nth-child(1) {
+    top: 8px;
+    transform: rotate(45deg);
+}
+
+.meny-knapp[aria-expanded="true"] .meny-linje:nth-child(2) {
+    opacity: 0;
+}
+
+.meny-knapp[aria-expanded="true"] .meny-linje:nth-child(3) {
+    top: 8px;
+    transform: rotate(-45deg);
 }
 
 
@@ -123,7 +176,7 @@ body {
     color: var(--hvit);
     font-size: 13px;
     font-weight: 700;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.6px;
     padding: 8px 2px;
     transition: color 0.15s ease;
 }
@@ -140,7 +193,7 @@ body {
 }
 
 .meny a:hover {
-    color: var(--hvit);
+    color: var(--rod);
 }
 
 .meny a.aktiv::after {
@@ -181,7 +234,8 @@ body {
     border-top: 5px solid currentColor;
 }
 
-.dropdown:hover .pil {
+.dropdown:hover .pil,
+.dropdown.apen .pil {
     transform: rotate(180deg);
 }
 
@@ -458,6 +512,56 @@ body {
             color: var(--rod);
         }
 
+
+/* Introduksjon på forsiden - tekst + bilde side om side */
+
+.introduksjon-innhold {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.introduksjon-tekst p {
+    max-width: 560px;
+}
+
+.introduksjon-bilde {
+    position: relative;
+    aspect-ratio: 2 / 3;
+}
+
+    .introduksjon-bilde img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .introduksjon-bilde::before,
+    .introduksjon-bilde::after {
+        content: "";
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        border-color: var(--rod);
+        border-style: solid;
+        pointer-events: none;
+    }
+
+    .introduksjon-bilde::before {
+        top: -2px;
+        left: -2px;
+        border-width: 3px 0 0 3px;
+    }
+
+    .introduksjon-bilde::after {
+        bottom: -2px;
+        right: -2px;
+        border-width: 0 3px 3px 0;
+    }
+
+
     .oppdrag-liste {
         margin: 20px 0 32px;
         padding-left: 0;
@@ -557,22 +661,373 @@ body {
 
 
 /* =====================================================
+   LYSBOKS (bildevisning i fullskjerm)
+   ===================================================== */
+
+.lysboks {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 70px 110px;
+    background-color: rgba(10, 10, 10, 0.92);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.lysboks.apen {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lysboks img {
+    max-width: min(880px, 100%);
+    max-height: 72vh;
+    display: block;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lysboks-lukk {
+    position: absolute;
+    top: 24px;
+    right: 30px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: none;
+    color: var(--hvit);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.lysboks-lukk:hover {
+    background-color: var(--rod);
+    border-color: var(--rod);
+}
+
+.lysboks-pil {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: none;
+    color: var(--hvit);
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.lysboks-pil:hover {
+    background-color: var(--rod);
+    border-color: var(--rod);
+}
+
+.lysboks-forrige {
+    left: 30px;
+}
+
+.lysboks-neste {
+    right: 30px;
+}
+
+@media (max-width: 700px) {
+
+    .lysboks {
+        padding: 70px 24px;
+    }
+
+    .lysboks-pil {
+        display: none;
+    }
+}
+
+
+/* =====================================================
    BUNNTEKST
    ===================================================== */
 
 .bunntekst {
     background-color: var(--svart-2);
     color: var(--hvit);
-    padding: 38px 30px;
-    text-align: center;
+    padding: 70px 30px 0;
     border-top: 3px solid var(--rod);
 }
 
-    .bunntekst p {
-        font-size: 13px;
-        color: #a3a3a3;
-        margin: 5px 0;
+.bunntekst-innhold {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 40px 50px;
+    padding-bottom: 50px;
+}
+
+
+/* Om / merkevare */
+
+.bunntekst-om {
+    max-width: 380px;
+}
+
+.bunntekst-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--hvit);
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    margin-bottom: 22px;
+}
+
+    .bunntekst-logo span {
+        margin-left: -4px;
+        color: #cfcfcf;
+        font-weight: 700;
     }
+
+    .bunntekst-logo img {
+        width: 104px;
+        height: 36px;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+.bunntekst-prosjekt {
+    font-size: 14px;
+    color: #d8d8d8;
+    font-weight: 600;
+    margin: 0 0 12px;
+}
+
+.bunntekst-beskrivelse {
+    font-size: 13px;
+    color: #b5b5b5;
+    line-height: 1.7;
+    margin: 0 0 20px;
+}
+
+.bunntekst-sosiale {
+    display: flex;
+    gap: 10px;
+}
+
+    .bunntekst-sosiale a {
+        padding: 6px 14px;
+        border: 1px solid #3a3a3a;
+        color: #cfcfcf;
+        font-size: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .bunntekst-sosiale a:hover {
+        color: var(--rod);
+        border-color: var(--rod);
+    }
+
+
+/* Hurtiglenker */
+
+.bunntekst-lenker {
+    min-width: 0;
+}
+
+.bunntekst-lenker .bunntekst-overskrift {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #a0a0a0;
+    margin: 0 0 20px;
+}
+
+.bunntekst-lenker .bunntekst-overskrift::before {
+    content: "";
+    width: 14px;
+    height: 2px;
+    background-color: var(--rod);
+    flex-shrink: 0;
+}
+
+.bunntekst-lenker ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bunntekst-lenker a {
+    font-size: 14px;
+    color: #cfcfcf;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+    .bunntekst-lenker a:hover {
+        color: var(--rod);
+    }
+
+
+/* Bunnlinje */
+
+.bunntekst-bunnlinje {
+    border-top: 1px solid #262626;
+}
+
+    .bunntekst-bunnlinje p {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 22px 30px;
+        font-size: 12px;
+        color: #8f8f8f;
+        text-align: left;
+    }
+
+
+/* =====================================================
+   MOBIL / NETTBRETT - NAVIGASJON
+   ===================================================== */
+
+/* Menyen med fem punkter blir for trang for logoen under 1200px,
+   så hamburgermenyen tar over her - ikke først ved 900px. */
+
+@media (max-width: 1200px) {
+
+    .navigasjon {
+        padding: 0 20px;
+        flex-wrap: nowrap;
+    }
+
+    .logo {
+        min-width: 0;
+        gap: 8px;
+    }
+
+        .logo img {
+            width: 76px;
+            height: auto;
+        }
+
+        .logo-tekst {
+            display: none;
+        }
+
+    .meny-knapp {
+        display: block;
+    }
+
+    /* Fullskjerms mobilmeny - samme visuelle stil som resten av Smaragd Motorsport-prosjektet */
+
+    .meny {
+        position: fixed;
+        top: var(--hoyde-nav);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 0;
+        margin: 0;
+        padding: 10px 0 40px;
+        background-color: var(--svart);
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+    }
+
+    .meny.apen {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    body.meny-apen {
+        overflow: hidden;
+    }
+
+    .meny li {
+        position: static;
+        width: 100%;
+        border-top: 1px solid #262626;
+    }
+
+        .meny li:first-child {
+            border-top: none;
+        }
+
+    .meny a {
+        display: block;
+        width: 100%;
+        padding: 20px 30px;
+        font-size: 14px;
+        text-align: center;
+        letter-spacing: 1.5px;
+    }
+
+    .meny a::after {
+        left: 50%;
+        bottom: 11px;
+        transform: translateX(-50%);
+    }
+
+    .meny a.dropdown-knapp {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Dropdown vises som utvidbar liste i mobilmenyen i stedet for hover */
+
+    .dropdown-meny {
+        position: static;
+        min-width: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        border: none;
+        box-shadow: none;
+        background-color: var(--svart-2);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.22s ease;
+    }
+
+    .dropdown.apen .dropdown-meny {
+        max-height: 200px;
+    }
+
+    .dropdown-meny a {
+        padding: 16px 30px;
+        font-size: 12px;
+        color: #cfcfcf;
+    }
+}
 
 
 /* =====================================================
@@ -581,29 +1036,36 @@ body {
 
 @media (max-width: 900px) {
 
-    .navigasjon {
-        flex-direction: column;
-        gap: 20px;
-        padding: 20px;
-        min-height: auto;
-    }
-
-    .meny {
-        gap: 18px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-        .meny a {
-            font-size: 12px;
-        }
-
     .hero {
         min-height: 100svh;
     }
 
     .fokus-kort {
         grid-template-columns: 1fr;
+    }
+
+    .introduksjon-innhold {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .introduksjon-innhold .introduksjon-bilde {
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .introduksjon-tekst p {
+        max-width: none;
+    }
+
+    .bunntekst-innhold {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+    }
+
+    .bunntekst-om {
+        grid-column: 1 / -1;
+        max-width: none;
     }
 }
 
@@ -638,5 +1100,90 @@ body {
 
     .rod {
         color: var(--rod);
+    }
+
+    .bunntekst {
+        padding-top: 50px;
+    }
+
+    .bunntekst-innhold {
+        grid-template-columns: 1fr;
+        padding-bottom: 36px;
+    }
+}
+
+/* =====================================================
+   BEVEGELSE – innkomst, navigasjon og hover
+   ===================================================== */
+
+@view-transition {
+    navigation: auto;
+}
+
+@keyframes reveal-in {
+    from {
+        opacity: 0;
+        transform: translateY(-18px);
+    }
+
+    to {
+        opacity: var(--slutt-opacity, 1);
+        transform: translateY(0);
+    }
+}
+
+@keyframes hopp {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    35% {
+        transform: translateY(-6px);
+    }
+
+    65% {
+        transform: translateY(1px);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+    /* Skjul elementene med en gang (før JS har kjørt), slik at de ikke blinker.
+       Klassen "anim" settes tidlig i <head>. Samme liste som i JS/animasjoner.js. */
+    html.anim :is(
+        .hero-innhold > *,
+        .dagbok-introduksjon-innhold > *,
+        .om-oss-innhold > h1,
+        .om-oss-overtekst,
+        .om-oss-introtekst,
+        .status-intro > div > *,
+        .refleksjon-intro > div > *,
+        .innhold > *,
+        .kort,
+        .personkort,
+        .uke,
+        .status-innhold > *,
+        .status-skjermbilder figure,
+        .refleksjon-del,
+        .refleksjon-slutt
+    ):not(.reveal-ferdig) {
+        opacity: 0;
+        transform: translateY(-18px);
+    }
+
+    /* Elementer glir ned på plass (settes av JS/animasjoner.js) */
+    .reveal.reveal {
+        opacity: 0;
+        transform: translateY(-18px);
+        will-change: opacity, transform;
+    }
+
+    .reveal.reveal-visible {
+        animation: reveal-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Kun hovedknappene hopper opp og ned ved hover */
+    .hovedknapp:hover {
+        animation: hopp 0.5s ease;
     }
 }
