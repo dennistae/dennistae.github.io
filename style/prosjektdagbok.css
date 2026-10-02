@@ -142,7 +142,8 @@
 /* Uker som ikke er skrevet ennå */
 
 .uke-kommer {
-    opacity: 0.55;
+    --slutt-opacity: 0.55;
+    opacity: var(--slutt-opacity);
 }
 
     .uke-kommer .uke-rad {

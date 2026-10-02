@@ -122,16 +122,21 @@ const footer = `
                     IS-302 Praksisprosjekt · Gruppe 27
                 </p>
 
-                <p class="bunntekst-navn">
-                    Mohamed Liban Osman · Noa Vincent Nordén · Dennis Tea · Efe Kaan Eksi · Marius Khiem Nguyen
+                <p class="bunntekst-beskrivelse">
+                    Utvikling av en digital løsning for Smaragd Motorsport, i samarbeid med Universitetet i Agder.
                 </p>
+
+                <div class="bunntekst-sosiale">
+                    <a href="https://www.instagram.com/smaragd.motorsport/" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://www.tiktok.com/@smaragd.motorsport1" target="_blank" rel="noopener">TikTok</a>
+                </div>
 
             </div>
 
-            <nav class="bunntekst-lenker" aria-label="Hurtiglenker">
+            <nav class="bunntekst-lenker" aria-label="Sider">
 
                 <p class="bunntekst-overskrift">
-                    HURTIGLENKER
+                    SIDER
                 </p>
 
                 <ul>
@@ -139,6 +144,17 @@ const footer = `
                     <li><a href="${htmlMappe}om-oss.html">Om oss</a></li>
                     <li><a href="${htmlMappe}oppgavebeskrivelse.html">Oppgave</a></li>
                     <li><a href="${htmlMappe}prosjektdagbok.html">Prosjektdagbok</a></li>
+                </ul>
+
+            </nav>
+
+            <nav class="bunntekst-lenker" aria-label="Rapporter">
+
+                <p class="bunntekst-overskrift">
+                    RAPPORTER
+                </p>
+
+                <ul>
                     <li><a href="${htmlMappe}status-1.html">Statusrapport 1</a></li>
                     <li><a href="${htmlMappe}status-2.html">Statusrapport 2</a></li>
                     <li><a href="${htmlMappe}avsluttende-refleksjon.html">Avsluttende refleksjon</a></li>
@@ -150,7 +166,7 @@ const footer = `
 
         <div class="bunntekst-bunnlinje">
             <p>
-                © 2026 IS-302 Praksisprosjekt – Smaragd Motorsport
+                © 2026 IS-302 Praksisprosjekt · Gruppe 27 · Universitetet i Agder
             </p>
         </div>
 
