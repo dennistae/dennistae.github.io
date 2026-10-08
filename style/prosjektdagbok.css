@@ -215,6 +215,28 @@
 }
 
 
+/* Personlige bidrag */
+
+.person {
+    margin-bottom: 40px;
+}
+
+.person:last-child {
+    margin-bottom: 0;
+}
+
+.person h3 {
+    margin: 0 0 12px;
+    color: var(--gra-mork);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.person:not(:has(p)) {
+    min-height: 60px;
+}
+
+
 /* Mobil */
 
 @media (max-width: 750px) {
