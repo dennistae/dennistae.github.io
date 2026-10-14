@@ -185,7 +185,7 @@
 
                     <div class="uke-info">
                         <span>21. september – 27. september 2026</span>
-                        <h2>Samling 1 og endringer i databasen</h2>
+                        <h2>Samling 1 og leverandørbytte</h2>
                     </div>
 
                     <div class="uke-symbol"></div>
@@ -227,30 +227,58 @@
                     <div class="person">
                         <h3>Dennis <span class="person-rolle">– Frontend &amp; kundeopplevelse</span></h3>
                         <p>
-                            Som frontend-ansvarlig markerer denne uken overgangen fra planlegging til selve utviklingen av nettsiden. Arbeidet de siste ukene med Smaragd Motorsport og kartleggingen av brukerne har gitt oss et godt grunnlag, og nå har jeg begynt å gjøre om det til konkrete sider og komponenter.
+                            Jeg har gått fra planleggingsfasen til å starte på selve utviklingen av nettsiden. Smaragd Motorsport har sendt oss eksempler på nettsider de liker, og jeg har sett nærmere på disse for å finne ut hva som fungerer godt, og hva vi bør unngå. Blant annet har jeg lagt merke til uoversiktlige oppsett og løsninger som er lite praktiske å bruke på mobil. Dette er noe vi skal unngå under utviklingen av nettsiden. Med utgangspunkt i dette har vi bestemt at nettsiden skal inneholde: forside, produktkatalog, produktside, oversikt over bil og motorsykkelmerker, om oss og kontakt.
                         </p>
                         <p>
-                            Bedriften har sendt over noen nettsider de ønsker å hente inspirasjon fra. Jeg har gått kritisk gjennom dem og vurdert hva som fungerer bra, som tydelig navigasjon og oversiktlig produktvisning, og hva vi bør gjøre annerledes, for eksempel der sidene blir rotete eller tungt å bruke på mobil. Dette har vi brukt til å bestemme hvilke sider nettsiden trenger: forside, produktkatalog, produktside, side for bil/motorsykkelmerker, om oss og kontakt.
-                        </p>
-                        <p>
-                            Med dette som utgangspunkt har jeg begynt å lage oppsettet for sidene, og jobber først med felles elementer som header og footer. Foreløpig har jeg valgt å ikke fokusere på universell utforming, brukervennlighet og detaljer, selv om det fortsatt er viktig for oss. Prioriteten nå, og i de neste ukene, er å få på plass de viktigste elementene på hver side. Når grunnstrukturen er komplett, skal vi bruke tiden på å finpusse detaljene og gå gjennom universell utforming og brukervennlighet. Neste steg er å få på plass en felles stil med farger, typografi og komponenter som matcher logoen og estetikken til bedriften, slik at den kan brukes gjennom hele nettsiden.
+                            Jeg har startet med å bygge opp strukturen på sidene, med forside, header og footer som de første felles elementene, deretter Merker-siden, Kontakt-siden og Om oss-siden. På dette stadiet har jeg valgt å prioritere oppbyggingen fremfor universell utforming, brukervennlighet og mindre detaljer. Dette er fortsatt viktige områder, men fokuset de neste ukene er å få de grunnleggende funksjonene og elementene på plass. Når strukturen er ferdig, kan vi bruke mer tid på å forbedre detaljene. Videre skal vi etablere en gjennomgående visuell stil som passer til logoen og uttrykket til Smaragd Motorsport.
                         </p>
                     </div>
 
                     <div class="person">
                         <h3>Efe <span class="person-rolle">– Produktdata &amp; integrasjoner</span></h3>
+                        <p>
+                            Denne uken har jeg jobbet videre med produktdataene til Smaragd Motorsport. Jeg har sett på hvordan produktinformasjon fra leverandørene skal struktureres og lagres i Supabase. Jeg har også undersøkt utfordringer med manglende produktbeskrivelser, merke, kategori og bilder.
+                        </p>
                     </div>
 
                     <div class="person">
                         <h3>Marius <span class="person-rolle">– Backend, ordre &amp; transaksjoner</span></h3>
+                        <p>
+                            Vi har hentet produktdata fra fem nettbutikker og lagret dem i Supabase. Dataene inneholder produktnavn, pris, SKU, bilde og lenke. Alt er koblet til SmaragdMotor, som er bygget med ASP.NET MVC.
+                        </p>
+                        <p>
+                            Fire av nettbutikkene (mtcmotorsport, pureturbos, mrtengineering og grailexhaust) bruker Shopify. Der henter vi produktdata direkte fra en JSON-fil.
+                        </p>
+                        <p>
+                            Remus fungerer annerledes. Der henter vi data fra nettsiden ved hjelp av HTML og regex. Denne metoden er litt mer sårbar fordi den er avhengig av hvordan nettsiden er bygget. Vi har lagret 381 av 385 produkter fra Remus.
+                        </p>
+                        <p>
+                            Alle produktene lagres i tabellen products. Hvert produkt har en unik lenke (url) som hindrer at samme produkt blir lagret flere ganger.
+                        </p>
+                        <p>
+                            Vi bruker en secret-nøkkel for å koble til Supabase. Denne nøkkelen må holdes hemmelig og må aldri deles eller lastes opp til GitHub.
+                        </p>
                     </div>
 
                     <div class="person">
                         <h3>Mohamed <span class="person-rolle">– Pris, valuta &amp; automatisering</span></h3>
+                        <p>
+                            Denne uken arbeidet jeg med planlegging og undersøkelser rundt implementering av e-postverifisering i nettbutikken. Jeg undersøkte hvordan Resend kunne integreres med ASP.NET Identity for å sende bekreftelseslenker ved brukerregistrering. Arbeidet omfattet også vurdering av sikker håndtering av API-nøkler, nødvendige endringer i registreringsflyten og hvordan løsningen skulle kobles til eksisterende autentisering.
+                        </p>
                     </div>
 
                     <div class="person">
                         <h3>Noa <span class="person-rolle">– Adminsystem, drift &amp; compliance</span></h3>
+                        <p>
+                            Denne uken jobbet jeg videre med admin-siden og produktinnholdet i admin-panelet. Admin-panelet var allerede på plass, så fokuset var mest på å gjøre produktinnholdet klart.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Felles for gruppen</h3>
+                        <p>
+                            Denne uken har vi begynt å utvikle nettsiden etter å ha jobbet med planleggingen i de foregående ukene. Alle gruppemedlemmene har kommet i gang med sine ansvarsområder, og vi samarbeider for å få de ulike delene av løsningen til å fungere sammen. Frontend, produktdata og backend tar utgangspunkt i den samme Supabase-databasen, og vi bruker et felles GitHub-repo for utviklingen. Samtidig har vi opprettholdt dialogen med Smaragd Motorsport for å følge opp behov og ønsker underveis i prosjektet.
+                        </p>
                     </div>
 
                 </div>
@@ -259,33 +287,132 @@
 
 
             <!-- Uke 41 -->
-            <div class="uke uke-kommer">
+            <details class="uke">
 
-                <div class="uke-rad">
+                <summary>
                     <div class="uke-nummer">UKE 41</div>
 
                     <div class="uke-info">
                         <span>5. oktober – 11. oktober 2026</span>
-                        <h2>Kommer snart</h2>
+                        <h2>Endringer i databasen, produktkatalog og ønske om tidlig lansering</h2>
                     </div>
+
+                    <div class="uke-symbol"></div>
+                </summary>
+
+                <div class="uke-innhold">
+
+                    <div class="person">
+                        <h3>Dennis <span class="person-rolle">– Frontend &amp; kundeopplevelse</span></h3>
+                        <p>
+                            Forside, header og footer er nå samlet i felles komponenter som brukes på tvers av nettsidens sider. Kontakt-siden og Om oss-siden har jeg videreutviklet med et design som passer til Smaragd Motorsport. Designet kan endres etter hvert, da dette ikke er hovedfokuset nå. I tillegg har jeg startet arbeidet med produktkatalogen, hvor jeg har lagt inn produktkort, kategorifiltrering og mulighet for å velge bil- eller motorsykkelmerke. Foreløpig bruker jeg testdata for å utvikle og teste løsningen.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Efe <span class="person-rolle">– Produktdata &amp; integrasjoner</span></h3>
+                        <p>
+                            Denne uken har jeg jobbet videre med produktimport og hvordan data fra leverandørene skal kobles til riktig struktur i databasen. Jeg har fokusert på at produktinformasjonen skal lagres korrekt, og sett på hvordan vi kan håndtere manglende eller feilaktige verdier slik at produktene kan vises riktig på nettsiden.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Marius <span class="person-rolle">– Backend, ordre &amp; transaksjoner</span></h3>
+                        <p>
+                            Denne uken måtte vi fjerne en leverandør og legge inn en ny. Jeg slettet dataene fra den gamle leverandøren og la inn nye data fra den nye. Det var veldig mye nytt, og det gjorde at databasen ble betydelig større. Jeg prøver nå å legge inn bilder der de mangler, og beskrivelse på alle produkter. Beskrivelsene er på engelsk, og siden nettsiden skal være på norsk, må vi oversette beskrivelsen på alle produktene (over 5000) til norsk. Jeg hadde ansvaret for oversettelsen, men det ble for mye for PC-en min å håndtere når det var flere tusen produkter. Noa hjalp til og kjørte oversettelsen på sin PC. Dette tok god tid, men ble ferdig i løpet av uken.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Mohamed <span class="person-rolle">– Pris, valuta &amp; automatisering</span></h3>
+                        <p>
+                            Denne uken fortsatte jeg arbeidet med e-postverifisering og forberedte den tekniske implementeringen. Jeg jobbet med oppsett av Resend, konfigurering av domenet og tilpasning av løsningen til prosjektets eksisterende struktur. Jeg undersøkte også hvordan bekreftelseslenker skulle genereres, hvordan brukerkontoer skulle aktiveres etter verifisering, og hvordan funksjonaliteten kunne testes uten å påvirke eksisterende brukere.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Noa <span class="person-rolle">– Adminsystem, drift &amp; compliance</span></h3>
+                        <p>
+                            Denne uken hjalp jeg Marius med å oversette produktbeskrivelsene til norsk. Det var flere tusen produkter, og det ble for tungt for PC-en til Marius, så jeg kjørte oversettelsen på min PC. Alle produktbeskrivelsene ble oversatt, og vi oppdaterte også produktimporten slik at de norske tekstene nå lagres riktig i databasen og er klare til å vises på produktsidene.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Felles for gruppen</h3>
+                        <p>
+                            Smaragd Motorsport har gitt beskjed om at de ønsker å få publisert nettsiden så snart som mulig. De har allerede kjøpt et eget domene, men mangler fortsatt en avklart løsning for hosting. Bedriften har også gjort det tydelig at det viktigste nå er å få nettsiden tilgjengelig, selv om ikke alt er ferdig. Det vil være mulig å rette opp feil og videreutvikle løsningen etter publisering. Derfor må vi prioritere de mest sentrale funksjonene og sørge for at vi får en fungerende versjon ut så raskt som mulig.
+                        </p>
+                    </div>
+
                 </div>
 
-            </div>
+            </details>
 
 
             <!-- Uke 42 -->
-            <div class="uke uke-kommer">
+            <details class="uke">
 
-                <div class="uke-rad">
+                <summary>
                     <div class="uke-nummer">UKE 42</div>
 
                     <div class="uke-info">
                         <span>12. oktober – 18. oktober 2026</span>
-                        <h2>Kommer snart</h2>
+                        <h2>Kasse, databasekobling og hosting av nettsiden</h2>
                     </div>
+
+                    <div class="uke-symbol"></div>
+                </summary>
+
+                <div class="uke-innhold">
+
+                    <div class="person">
+                        <h3>Dennis <span class="person-rolle">– Frontend &amp; kundeopplevelse</span></h3>
+                        <p>
+                            Jeg har startet arbeidet med å koble produktkatalogen til Supabase, slik at informasjon om produkter, priser, bilder, kategorier og merker kan hentes direkte fra databasen. Under arbeidet har jeg lagt merke til at manglende produktbilder og kategorier påvirker hvordan produktene presenteres på nettsiden. Dette skal vi følge opp videre sammen. 
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Efe <span class="person-rolle">– Produktdata &amp; integrasjoner</span></h3>
+                        <p>
+                            Denne uken har jeg jobbet videre med produktdata og kvalitetssikring. Etter at vi fikk beskjed om at en av leverandørene var byttet ut i uke 39, og Marius har lagt inn dataene fra den nye leverandøren, har jeg sett på hvordan dette har påvirket databasen og eksisterende produktinformasjon. Jeg har også fokusert på hvordan vi kan håndtere manglende data og unngå feil og duplikater ved import.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Marius <span class="person-rolle">– Backend, ordre &amp; transaksjoner</span></h3>
+                        <p>
+                            Denne uken har jeg laget backend for kassen. Når en kunde kjøper noe, lagres ordren i databasen og sendes videre til Stripe for betaling med kort. Når Stripe har godkjent betalingen, blir ordren registrert.
+                        </p>
+                        <p>
+                            Vi var litt usikre på om vi skulle bruke Stripe eller Vipps som betalingsmetode. Vi valgte Stripe fordi det ble vurdert som den mest lønnsomme løsningen. Det som mangler nå, er en Stripe-konto, som Smaragd Motorsport må opprette. Jeg fortsetter på dette neste uke.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Mohamed <span class="person-rolle">– Pris, valuta &amp; automatisering</span></h3>
+                        <p>
+                            Denne uken begynte jeg arbeidet med å klargjøre MVC-prosjektet for hosting gjennom Render. Jeg undersøkte nødvendige konfigurasjoner for Docker, miljøvariabler og tilkobling mellom applikasjonen og Supabase. I tillegg arbeidet jeg med PostgreSQL-databasen for ASP.NET Identity, blant annet tilkobling, lagring av brukerinformasjon og kontroll av autentiseringsfunksjonaliteten. Sammen med Noa fikk jeg også e-postverifiseringen med Resend på plass. Arbeidet ga grunnlaget for videre konfigurering og testing av hostingløsningen neste uke.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Noa <span class="person-rolle">– Adminsystem, drift &amp; compliance</span></h3>
+                        <p>
+                            Denne uken jobbet jeg sammen med Mohamed på brukerhåndtering. Vi fikk på plass e-postbekreftelse med Resend og ASP.NET Core Identity, og startet flyttingen av brukerkontoer fra lokal SQLite til Supabase Postgres. Dette gjør at hele gruppen kan bruke de samme kontoene, inkludert admin-brukeren. Neste steg er å teste innlogging, e-postbekreftelse og admin-funksjonene mot den nye databasen, bestemme hvordan vanlige brukere skal håndteres, og deretter merge admin-grenen inn i main.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Felles for gruppen</h3>
+                        <p>
+                            Denne uken har vi i fellesskap undersøkt ulike måter å hoste nettsiden på gratis, slik at den kan publiseres på domenet til Smaragd Motorsport. Vi endte til slutt opp med Render, og jobber nå med å sette opp hostingen der slik at nettsiden fungerer. Målet er å publisere en første versjon så snart som mulig, samtidig som vi fortsetter utviklingen og forbedrer nettsiden etter hvert.
+                        </p>
+                    </div>
+
                 </div>
 
-            </div>
+            </details>
 
 
             <!-- Uke 43 -->
