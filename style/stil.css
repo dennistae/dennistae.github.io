@@ -548,6 +548,19 @@ body.meny-apen .topptekst .logo-mork {
     box-shadow: 0 0 10px var(--rod);
 }
 
+/* Teksten over hero-overskriften er ren tekst, uten boble */
+.hero .overtekst {
+    display: block;
+    padding: 0;
+    border: none;
+    background: none;
+    color: #c4c4c9;
+}
+
+.hero .overtekst::before {
+    display: none;
+}
+
 .hero h1 {
     font-size: clamp(52px, 9vw, 128px);
     line-height: 0.94;
