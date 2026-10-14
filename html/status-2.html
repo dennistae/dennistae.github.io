@@ -106,7 +106,7 @@
 
             <div class="status-tekst">
                 <p>
-                    Dennis har jobbet med grunnstrukturen i nettbutikken. Så langt er det laget sider for forsiden, produktkatalogen, bil- og motorsykkelmerker, Om oss og Kontakt. Header og footer er utviklet som felles komponenter, slik at de kan brukes på tvers av sidene. Vi har også etablert en felles visuell stil som passer med logoen og profilen til Smaragd Motorsport.
+                    Dennis har jobbet med grunnstrukturen i nettbutikken. Så langt er det laget sider for forsiden, produktkatalogen, bil- og motorsykkelmerker, Om oss og Kontakt. Vi har også laget handlekurv, kasseside og en side for ordrebekreftelse. Header og footer er utviklet som felles komponenter, slik at de kan brukes på tvers av sidene. Vi har også etablert en felles visuell stil som passer med logoen og profilen til Smaragd Motorsport.
                 </p>
                 <p>
                     Produktkatalogen inneholder produktkort, kategorifiltrering og mulighet for å velge mellom bil og motorsykkelmerker. Arbeidet med å koble katalogen til Supabase er også i gang. Målet er at produkter, priser, bilder, kategorier og merker skal hentes direkte fra databasen, i stedet for å legges inn manuelt på nettsiden.
@@ -131,7 +131,7 @@
                     Noa og Mohamed har arbeidet med registrering og håndtering av brukerkontoer. De har satt opp e-postbekreftelse ved registrering ved hjelp av Resend og ASP.NET Core Identity. I tillegg er arbeidet med å flytte brukerkontoene fra en lokal SQLite-database til Supabase Postgres påbegynt. Dette skal gjøre det mulig for hele gruppen å bruke de samme kontoene, inkludert administratorkontoen.
                 </p>
                 <p>
-                    På backend-siden har Marius utviklet funksjonalitet for kassen. Når en kunde gjennomfører et kjøp, lagres ordren i databasen før den sendes videre til Stripe for kortbetaling. Dersom betalingen godkjennes, blir ordren registrert. Vi vurderte både Stripe og Vipps som betalingsløsninger, men valgte Stripe. Før betalingsløsningen kan tas i bruk, må Smaragd Motorsport opprette en egen Stripe-konto.
+                    På backend-siden har Marius utviklet funksjonalitet for kassen. Når en kunde gjennomfører et kjøp, lagres ordren i databasen før den sendes videre til Stripe for kortbetaling. Dersom betalingen godkjennes, blir ordren registrert. Vi vurderte både Stripe og Vipps som betalingsløsninger, men valgte Stripe. Før betalingsløsningen kan tas i bruk, må Smaragd Motorsport opprette en egen Stripe-konto. Dennis har laget frontend-delen av kjøpsflyten, med handlekurv, kasseside og ordrebekreftelse, som skal kobles til denne backend-løsningen.
                 </p>
                 <p>
                     Vi har også undersøkt mulighetene for gratis hosting og kommet frem til at vi vil bruke Render. Mohamed har startet arbeidet med å klargjøre prosjektet for publisering. Dette innebærer blant annet oppsett med Docker, miljøvariabler og tilkobling til Supabase. Vi jobber fortsatt med å få hele hostingløsningen til å fungere som den skal.
@@ -175,7 +175,7 @@
                     Den viktigste prioriteringen fremover er å få nettbutikken publisert. Vi skal ferdigstille oppsettet på Render, koble løsningen til domenet til Smaragd Motorsport og kontrollere at nettsiden fungerer som forventet etter publisering. Betalingsløsningen må også kobles til Stripe, og vi skal teste hele kjøpsprosessen. I dette arbeidet må vi ivareta sikkerheten rundt betaling, nøkler og kundedata. For å komme videre med Stripe må bedriften først opprette en konto.
                 </p>
                 <p>
-                    På frontend-siden skal vi utvikle produktsider som viser blant annet spesifikasjoner, pris og lagerstatus. Vi skal også lage en søkefunksjon som håndterer både norske og engelske søkeord, og sørge for at handlekurven og kassen fungerer sammen med backend. I tillegg ønsker vi tilbakemeldinger fra Smaragd Motorsport på designet, slik at vi kan gjøre nødvendige endringer ut fra bedriftens ønsker og preferanser. Før vi går videre med universell utforming, brukervennlighet og finpuss, vil vi prioritere å få hovedfunksjonene på plass.
+                    På frontend-siden skal vi utvikle produktsider som viser blant annet spesifikasjoner, pris og lagerstatus. Vi skal også lage en søkefunksjon som håndterer både norske og engelske søkeord, og koble handlekurven, kassen og ordrebekreftelsen til backend og Stripe. I tillegg ønsker vi tilbakemeldinger fra Smaragd Motorsport på designet, slik at vi kan gjøre nødvendige endringer ut fra bedriftens ønsker og preferanser. Før vi går videre med universell utforming, brukervennlighet og finpuss, vil vi prioritere å få hovedfunksjonene på plass.
                 </p>
                 <p>
                     Vi skal fortsette å forbedre produktinformasjonen i databasen ved å fylle inn manglende beskrivelser, merker, kategorier og bilder der det er mulig. Samtidig må vi kvalitetssikre dataene og sørge for at importen håndterer duplikater på en god måte. Vi skal også teste innlogging, e-postbekreftelse og administrasjonsfunksjonene mot den nye databasen. Til slutt skal admin-grenen slås sammen med hovedløsningen.
