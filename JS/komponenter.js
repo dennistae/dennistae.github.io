@@ -194,6 +194,8 @@ document.addEventListener("DOMContentLoaded", () => {
     settOppLysboks();
     settOppHeaderScroll();
     apneUkeFraHash();
+    settOppApneAlle();
+    settOppTilToppen();
 
 });
 
@@ -385,6 +387,57 @@ function settOppHeaderScroll() {
     oppdater();
     window.addEventListener("scroll", oppdater, { passive: true });
     window.addEventListener("resize", oppdater);
+}
+
+
+/* Til toppen-knapp: vises på lange sider når man har scrollet et stykke */
+
+function settOppTilToppen() {
+
+    const knapp = document.createElement("button");
+    knapp.type = "button";
+    knapp.className = "til-toppen";
+    knapp.setAttribute("aria-label", "Til toppen");
+    knapp.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+    document.body.appendChild(knapp);
+
+    function oppdater() {
+        const langSide = document.documentElement.scrollHeight > window.innerHeight * 2;
+        knapp.classList.toggle("synlig", langSide && window.scrollY > 700);
+    }
+
+    knapp.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    window.addEventListener("scroll", oppdater, { passive: true });
+    window.addEventListener("resize", oppdater);
+    oppdater();
+}
+
+
+/* Dagbok: åpne eller lukk alle uker samtidig */
+
+function settOppApneAlle() {
+
+    const knapp = document.getElementById("dagbok-toggle");
+    if (!knapp) return;
+
+    const uker = [...document.querySelectorAll("details.uke")];
+    if (!uker.length) return;
+
+    function oppdater() {
+        knapp.textContent = uker.every((uke) => uke.open) ? "Lukk alle" : "Åpne alle";
+    }
+
+    knapp.addEventListener("click", () => {
+        const apne = !uker.every((uke) => uke.open);
+        uker.forEach((uke) => { uke.open = apne; });
+        oppdater();
+    });
+
+    uker.forEach((uke) => uke.addEventListener("toggle", oppdater));
+    oppdater();
 }
 
 

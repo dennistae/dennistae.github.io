@@ -15,7 +15,8 @@
 }
 
 .status-intro-tekst {
-    max-width: 620px;
+    max-width: 700px;
+    text-wrap: balance;
     color: #a6a6ac;
     font-size: clamp(17px, 1.6vw, 20px);
     line-height: 1.6;
@@ -30,6 +31,112 @@
 
 
 /* =====================================================
+   OPPSUMMERING OG INNHOLDSFORTEGNELSE
+   ===================================================== */
+
+.status-oversikt-innhold {
+    max-width: var(--bredde);
+    margin: auto;
+    padding: 80px 30px 20px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.status-oppsummering,
+.status-toc {
+    padding: 34px 36px;
+    border-radius: var(--radius);
+    background-color: var(--gra-lysest);
+}
+
+.status-oppsummering h2,
+.status-toc h2 {
+    margin: 0 0 18px;
+    color: var(--gra);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+}
+
+.status-oppsummering ul,
+.status-toc ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.status-oppsummering li {
+    position: relative;
+    padding: 12px 0 12px 24px;
+    border-top: 1px solid var(--gra-lys);
+    color: var(--svart);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.55;
+}
+
+.status-oppsummering li:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+
+.status-oppsummering li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 21px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--rod);
+}
+
+.status-oppsummering li:first-child::before {
+    top: 9px;
+}
+
+.status-toc ol {
+    counter-reset: toc;
+}
+
+.status-toc li {
+    counter-increment: toc;
+    border-top: 1px solid var(--gra-lys);
+}
+
+.status-toc li:first-child {
+    border-top: none;
+}
+
+.status-toc a {
+    display: flex;
+    gap: 14px;
+    padding: 11px 0;
+    color: var(--svart);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.status-toc a::before {
+    content: counter(toc, decimal-leading-zero);
+    flex: 0 0 22px;
+    color: var(--rod);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.9;
+}
+
+.status-toc a:hover {
+    color: var(--rod);
+}
+
+
+/* =====================================================
    INNHOLD
    ===================================================== */
 
@@ -38,6 +145,10 @@
     margin: auto;
     padding: 100px 30px;
     border-bottom: 1px solid var(--gra-lys);
+}
+
+.status-innhold {
+    scroll-margin-top: 20px;
 }
 
 .status-innhold:last-of-type {
@@ -129,6 +240,32 @@
 }
 
 
+/* Bilder som står sammen med teksten */
+
+.status-skjermbilder-inline {
+    margin-top: 44px;
+    align-items: start;
+}
+
+.status-skjermbilder-inline .row {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    align-items: start;
+}
+
+.status-skjermbilder-inline img {
+    aspect-ratio: auto;
+    object-fit: contain;
+    height: auto;
+}
+
+.status-skjermbilder-inline .row:only-child .col:only-child {
+    max-width: 760px;
+}
+
+
 /* MOBIL */
 
 @media (max-width: 750px) {
@@ -143,6 +280,20 @@
 
     .status-innhold {
         padding: 70px 20px;
+    }
+
+    .status-oversikt-innhold {
+        grid-template-columns: 1fr;
+        padding: 50px 20px 0;
+    }
+
+    .status-oppsummering,
+    .status-toc {
+        padding: 26px 24px;
+    }
+
+    .status-skjermbilder-inline .row {
+        grid-template-columns: 1fr;
     }
 
     .status-skjermbilder {

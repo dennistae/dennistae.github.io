@@ -36,6 +36,34 @@
 }
 
 
+/* Åpne / lukk alle uker */
+
+.dagbok-verktoy {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+}
+
+.dagbok-toggle {
+    padding: 10px 20px;
+    border: 1px solid var(--gra-lys);
+    border-radius: 999px;
+    background-color: var(--hvit);
+    color: var(--svart);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.dagbok-toggle:hover {
+    border-color: var(--svart);
+    background-color: var(--svart);
+    color: var(--hvit);
+}
+
+
 /* Uke – kort som folder seg ut */
 
 .uke {
@@ -179,20 +207,31 @@
 
 /* Personlige bidrag */
 
-.person {
-    margin-bottom: 40px;
-}
-
-.person:last-child {
-    margin-bottom: 0;
+.person + .person {
+    margin-top: 34px;
+    padding-top: 34px;
+    border-top: 1px solid var(--gra-lys);
 }
 
 .person h3 {
-    margin: 0 0 12px;
+    position: relative;
+    margin: 0 0 14px;
+    padding-left: 18px;
     color: var(--svart);
     font-size: 18px;
     font-weight: 600;
     letter-spacing: -0.02em;
+}
+
+.person h3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--rod);
 }
 
 .person-rolle {

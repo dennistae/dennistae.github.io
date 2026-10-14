@@ -1,6 +1,6 @@
 /**
  * "Følg prosjektet" på forsiden.
- * Leser prosjektdagboken og bygger nøkkeltall, siste uke og en tidslinje,
+ * Leser prosjektdagboken og bygger siste uke og en tidslinje,
  * slik at forsiden oppdateres av seg selv når en ny uke skrives i dagboken.
  */
 
@@ -10,7 +10,6 @@
     if (!AKTUELL_BEHOLDER) return;
 
     const DAGBOK_URL = "./html/prosjektdagbok.html";
-    const ANTALL_STATUSRAPPORTER = 2;
 
     function el(tag, klasse, tekst) {
         const e = document.createElement(tag);
@@ -61,21 +60,6 @@
         if (!siste) return null;
 
         const rot = document.createDocumentFragment();
-
-
-        /* Nøkkeltall */
-
-        const tall = el("div", "folg-tall");
-        [
-            [skrevne.length, "uker dokumentert"],
-            [uker.length - skrevne.length, "uker igjen"],
-            [ANTALL_STATUSRAPPORTER, "statusrapporter"]
-        ].forEach(([verdi, etikett]) => {
-            const boks = el("div", "folg-tall-boks");
-            boks.append(el("span", "folg-tall-verdi", verdi), el("span", "folg-tall-etikett", etikett));
-            tall.append(boks);
-        });
-        rot.append(tall);
 
 
         /* Siste fra dagboken */
