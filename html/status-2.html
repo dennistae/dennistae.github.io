@@ -31,7 +31,7 @@
                 </h1>
 
                 <p class="status-intro-tekst">
-                    En oversikt over fremdriften i utviklingen av nettbutikken til Smaragd Motorsport, med fokus på arbeidsoppgaver, teknisk utvikling, utfordringer og videre arbeid.
+                    Fra planlegging til fungerende nettbutikk. Gruppens fremdrift så langt, våre tekniske løsninger og utfordringer, og veien videre for oss.
                 </p>
 
                 <p class="status-dato">
@@ -52,10 +52,10 @@
 
             <div class="status-tekst">
                 <p>
-                    Siden statusrapport 1 har vi jobbet videre med utviklingen av nettbutikken til Smaragd Motorsport. Vi har gått fra den innledende planleggingsfasen til å arbeide mer konkret med den tekniske løsningen. Arbeidet har blant annet omfattet produktdata, Supabase-databasen og videreutvikling av frontend.
+                    Siden statusrapport 1 har vi gått fra planlegging til aktiv utvikling av nettbutikken til Smaragd Motorsport. Vi har blant annet jobbet med å importere og organisere produktdata i Supabase, utvikle frontend, sette opp brukerkontoer med e-postbekreftelse og bygge backend for kasse og betaling. I tillegg har vi startet forberedelsene til hosting. De viktigste delene av løsningen er nå under utvikling, men det gjenstår fortsatt arbeid med å ferdigstille funksjonene og få dem til å fungere sammen.
                 </p>
                 <p>
-                    Vi har fortsatt dialogen med Smaragd Motorsport for å få en bedre forståelse av bedriftens behov og forventninger. Samtidig har vi jobbet med å utvikle de ulike delene av løsningen og finne ut hvordan de skal fungere sammen. Dette har gitt oss bedre oversikt over hva som gjenstår før nettbutikken kan bli en helhetlig og funksjonell løsning.
+                    Gjennom prosjektet har vi holdt kontakten med Smaragd Motorsport for å avklare behov og forventninger. Bedriften ønsker at nettbutikken skal publiseres på deres eget domene så snart som mulig. Det viktigste er at nettsiden blir tilgjengelig, selv om enkelte funksjoner fortsatt mangler eller trenger forbedringer. Vi legger derfor størst vekt på å få de mest sentrale funksjonene på plass først, med mulighet for å rette feil og videreutvikle løsningen etter publisering.
                 </p>
             </div>
 
@@ -71,10 +71,10 @@
 
             <div class="status-tekst">
                 <p>
-                    Gruppemedlemmene har ulike hovedansvarsområder i prosjektet. Dennis har ansvar for frontend, Noa arbeider med administrasjonssystemet, Marius har ansvar for backend og ordrebehandling, Mohammed arbeider med prisberegning og valuta, og Kaan har ansvar for produktdata, leverandørintegrasjoner, testing og integrasjonssikkerhet.
+                    Vi har fordelt hovedansvaret mellom gruppemedlemmene for å sikre fremdrift på de ulike delene av prosjektet. Dennis jobber med frontend, Noa med administrasjonssystemet, Marius med backend og ordrebehandling, Mohamed med pris og valuta, og Efe med produktdata og leverandørintegrasjoner. Mohamed har i tillegg jobbet med e-postverifisering og forberedelser til hosting.
                 </p>
                 <p>
-                    Selv om vi har fordelt ansvarsområdene, samarbeider vi på tvers av gruppen for å sikre at de ulike delene av løsningen fungerer sammen. En mer detaljert oversikt over hvert gruppemedlems arbeidsoppgaver og fremdrift finnes i prosjektdagboken.
+                    Selv om alle har sine egne ansvarsområder, samarbeider vi når oppgavene overlapper. Noa har blant annet hjulpet Marius med å oversette produktbeskrivelser, mens Noa og Mohamed har samarbeidet om håndteringen av brukerkontoer. En mer detaljert oversikt over arbeidet til hvert gruppemedlem finnes i prosjektdagboken.
                 </p>
             </div>
 
@@ -90,10 +90,10 @@
 
             <div class="status-tekst">
                 <p>
-                    Arbeidet med produktdata har vært en viktig del av utviklingen. Vi bruker Supabase til å lagre produktinformasjon som skal brukes i nettbutikken. Målet er å organisere produktene på en strukturert måte, slik at informasjonen kan hentes frem og presenteres for brukerne.
+                    Supabase brukes til å lagre produktinformasjonen som nettbutikken bygger på. Marius har hentet produktdata fra fem nettbutikker og lagt dem inn i databasen. Fire av leverandørene bruker Shopify, der produktinformasjonen hentes fra JSON-filer. For Remus hentes dataene direkte fra nettsiden ved hjelp av HTML. Hvert produkt har en unik lenke som brukes for å unngå at det samme produktet blir lagret flere ganger. Efe har samtidig jobbet med strukturen på produktdataene, hvordan de skal kobles til databasen, og hvordan manglende eller feilaktige verdier skal håndteres.
                 </p>
                 <p>
-                    Kaan har spesielt arbeidet med hvordan produktdata fra leverandørene skal struktureres, importeres og lagres. Dette omfatter blant annet håndtering av produktnavn, SKU, priser, produktlenker og bilder der dette er tilgjengelig. Arbeidet er viktig for at produktene skal kunne vises korrekt, og for at funksjoner som søk og filtrering skal kunne utvikles videre.
+                    Underveis i prosjektet byttet Smaragd Motorsport ut én av leverandørene. Vi måtte derfor fjerne dataene fra den tidligere leverandøren og importere produkter fra den nye. Dette førte til en betydelig økning i datamengden. Siden produktbeskrivelsene var på engelsk, måtte de oversettes til norsk for å passe til språket i nettbutikken. Beskrivelsene for over 5000 produkter er nå oversatt, og produktimporten er tilpasset slik at de norske tekstene blir lagret riktig i databasen.
                 </p>
             </div>
 
@@ -109,10 +109,35 @@
 
             <div class="status-tekst">
                 <p>
-                    Vi har også jobbet videre med frontend og utformingen av nettbutikken. Målet er å lage en oversiktlig og brukervennlig løsning der kundene enkelt kan navigere på nettsiden og finne relevante produkter.
+                    Dennis har jobbet med grunnstrukturen i nettbutikken. Så langt er det laget sider for forsiden, produktkatalogen, bil- og motorsykkelmerker, Om oss og Kontakt. Header og footer er utviklet som felles komponenter, slik at de kan brukes på tvers av sidene. Vi har også etablert en felles visuell stil som passer med logoen og profilen til Smaragd Motorsport.
                 </p>
                 <p>
-                    Arbeidet med frontend skal etter hvert kobles tettere sammen med produktdataene i databasen. På denne måten kan informasjonen som lagres i systemet, presenteres på en forståelig måte for brukerne.
+                    Produktkatalogen inneholder produktkort, kategorifiltrering og mulighet for å velge mellom bil og motorsykkelmerker. Arbeidet med å koble katalogen til Supabase er også i gang. Målet er at produkter, priser, bilder, kategorier og merker skal hentes direkte fra databasen, i stedet for å legges inn manuelt på nettsiden.
+                </p>
+                <p>
+                    I denne fasen prioriterer vi å få på plass de viktigste sidene og funksjonene. Arbeid med universell utforming, brukervennlighet og mindre designdetaljer vil få større oppmerksomhet når hoveddelene av nettbutikken er mer komplette.
+                </p>
+            </div>
+
+        </section>
+
+        <section class="status-innhold">
+
+            <div class="status-header">
+                <h2>
+                    Brukerkontoer, kasse og hosting
+                </h2>
+            </div>
+
+            <div class="status-tekst">
+                <p>
+                    Noa og Mohamed har arbeidet med registrering og håndtering av brukerkontoer. De har satt opp e-postbekreftelse ved registrering ved hjelp av Resend og ASP.NET Core Identity. I tillegg er arbeidet med å flytte brukerkontoene fra en lokal SQLite-database til Supabase Postgres påbegynt. Dette skal gjøre det mulig for hele gruppen å bruke de samme kontoene, inkludert administratorkontoen.
+                </p>
+                <p>
+                    På backend-siden har Marius utviklet funksjonalitet for kassen. Når en kunde gjennomfører et kjøp, lagres ordren i databasen før den sendes videre til Stripe for kortbetaling. Dersom betalingen godkjennes, blir ordren registrert. Vi vurderte både Stripe og Vipps som betalingsløsninger, men valgte Stripe. Før betalingsløsningen kan tas i bruk, må Smaragd Motorsport opprette en egen Stripe-konto.
+                </p>
+                <p>
+                    Vi har også undersøkt mulighetene for gratis hosting og kommet frem til at vi vil bruke Render. Mohamed har startet arbeidet med å klargjøre prosjektet for publisering. Dette innebærer blant annet oppsett med Docker, miljøvariabler og tilkobling til Supabase. Vi jobber fortsatt med å få hele hostingløsningen til å fungere som den skal.
                 </p>
             </div>
 
@@ -128,13 +153,13 @@
 
             <div class="status-tekst">
                 <p>
-                    En av utfordringene vi har møtt, er at produktdataene fra leverandørene ikke alltid er komplette. Enkelte produkter mangler blant annet beskrivelser, merke, kategori eller bilder. Dette kan påvirke hvordan produktene vises på nettsiden, og gjøre det vanskeligere å utvikle god søke- og filtreringsfunksjonalitet.
+                    En av utfordringene vi har møtt, er at produktinformasjonen fra leverandørene ikke alltid er komplett. Noen produkter mangler beskrivelse, merke, kategori eller bilder. Dette påvirker hvordan produktene presenteres i nettbutikken, og gjør det mer krevende å utvikle gode funksjoner for søk og filtrering.
                 </p>
                 <p>
-                    Vi har også fått beskjed om at én av leverandørene er byttet ut. Dette betyr at vi må vurdere hvordan den nye leverandørens produktdata skal håndteres, og hvordan endringen påvirker databasen og informasjonen som allerede er lagret.
+                    Leverandørbyttet førte til at datamengden økte betydelig. Samtidig viste det seg at oversettelsen av over 5000 produktbeskrivelser ble for krevende å gjennomføre på én enkelt PC. Vi måtte derfor fordele arbeidet på flere maskiner. Vi har også brukt tid på å finne en passende hostingløsning som ikke medfører kostnader, ettersom bedriften ikke hadde bestemt seg for hvordan nettsiden skulle driftes.
                 </p>
                 <p>
-                    Gjennom arbeidet har vi fått en bedre forståelse av hvor viktig det er med god datakvalitet og pålitelige leverandørintegrasjoner. Det er ikke nok å importere et stort antall produkter; informasjonen må også være korrekt, strukturert og egnet til videre bruk i nettbutikken.
+                    Arbeidet har gitt oss en bedre forståelse av hvor viktig det er med god datakvalitet og pålitelige integrasjoner mot leverandørene. Det holder ikke bare å importere mange produkter. Informasjonen må også være korrekt, strukturert og tilpasset hvordan den skal brukes i nettbutikken.
                 </p>
             </div>
 
@@ -150,13 +175,16 @@
 
             <div class="status-tekst">
                 <p>
-                    Fremover vil vi fortsette å utvikle frontend og koblingen mellom nettsiden og databasen. Vi skal også arbeide videre med produktimport, kvalitetssikring av data og håndtering av manglende informasjon.
+                    Den viktigste prioriteringen fremover er å få nettbutikken publisert. Vi skal ferdigstille oppsettet på Render, koble løsningen til domenet til Smaragd Motorsport og kontrollere at nettsiden fungerer som forventet etter publisering. Betalingsløsningen må også kobles til Stripe, og vi skal teste hele kjøpsprosessen. I dette arbeidet må vi ivareta sikkerheten rundt betaling, nøkler og kundedata. For å komme videre med Stripe må bedriften først opprette en konto.
                 </p>
                 <p>
-                    Videre vil vi teste funksjonaliteten som utvikles, og fortsette dialogen med Smaragd Motorsport for å avklare behov og eventuelle endringer. Målet er å få på plass en sammenhengende løsning der produktdata, brukergrensesnitt, prisberegning og øvrige funksjoner fungerer godt sammen.
+                    På frontend-siden skal vi utvikle produktsider som viser blant annet spesifikasjoner, pris og lagerstatus. Vi skal også lage en søkefunksjon som håndterer både norske og engelske søkeord, og sørge for at handlekurven og kassen fungerer sammen med backend. I tillegg ønsker vi tilbakemeldinger fra Smaragd Motorsport på designet, slik at vi kan gjøre nødvendige endringer ut fra bedriftens ønsker og preferanser. Før vi går videre med universell utforming, brukervennlighet og finpuss, vil vi prioritere å få hovedfunksjonene på plass.
                 </p>
                 <p>
-                    Vi vil også fortsette å samarbeide på tvers av ansvarsområdene, slik at utviklingen av de enkelte delene bidrar til en helhetlig nettbutikk som dekker bedriftens behov.
+                    Vi skal fortsette å forbedre produktinformasjonen i databasen ved å fylle inn manglende beskrivelser, merker, kategorier og bilder der det er mulig. Samtidig må vi kvalitetssikre dataene og sørge for at importen håndterer duplikater på en god måte. Vi skal også teste innlogging, e-postbekreftelse og administrasjonsfunksjonene mot den nye databasen. Til slutt skal admin-grenen slås sammen med hovedløsningen.
+                </p>
+                <p>
+                    Gjennom resten av prosjektet vil vi fortsette å samarbeide på tvers av ansvarsområdene og hjelpe hverandre der det er behov. Målet er at de ulike delene skal fungere sammen som én helhetlig nettbutikk som dekker behovene til Smaragd Motorsport.
                 </p>
             </div>
 
@@ -180,13 +208,6 @@
                     <div class="col">
                         <img src="../images/status2/produktoversikt.png" alt="Bilde av produktoversikten på nettsiden">
                         <figcaption>Produktoversikt</figcaption>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <img src="../images/status2/supabase-produkter.png" alt="Bilde av produkttabellen i Supabase">
-                        <figcaption>Supabase produkttabell</figcaption>
                     </div>
                 </div>
 
