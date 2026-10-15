@@ -1,48 +1,22 @@
-/** Introduksjon */
-
-.dagbok-introduksjon {
-    background-color: var(--gra-lysest);
-    border-bottom: 1px solid var(--gra-lys);
-}
+/* Introduksjon */
 
 .dagbok-introduksjon-innhold {
-    max-width: 1100px;
+    max-width: var(--bredde);
     margin: auto;
-    padding: 150px 30px 100px;
-}
-
-.dagbok-overtekst {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    color: var(--gra);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 3px;
-}
-
-.dagbok-overtekst::before {
-    content: "";
-    width: 18px;
-    height: 2px;
-    background-color: var(--rod);
+    padding: 190px 30px 110px;
 }
 
 .dagbok-introduksjon h1 {
-    margin-bottom: 35px;
-    color: var(--svart);
-    font-size: clamp(55px, 8vw, 95px);
-    line-height: 1;
-    letter-spacing: -3px;
-    font-weight: 800;
+    margin-bottom: 32px;
+    padding-bottom: 0.06em;
+    font-size: clamp(52px, 9vw, 120px);
 }
 
 .dagbok-introduksjon-innhold > p:last-child {
-    max-width: 700px;
-    color: var(--gra-mork);
-    font-size: 18px;
-    line-height: 1.7;
+    max-width: 620px;
+    color: #a6a6ac;
+    font-size: clamp(17px, 1.6vw, 20px);
+    line-height: 1.6;
 }
 
 
@@ -53,160 +27,176 @@
 }
 
 .dagbok-innhold {
-    max-width: 1100px;
+    max-width: 960px;
     margin: auto;
-    padding: 100px 30px 130px;
+    padding: 90px 30px 140px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 
-/* Uke */
+/* Åpne / lukk alle uker */
+
+.dagbok-verktoy {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+}
+
+.dagbok-toggle {
+    padding: 10px 20px;
+    border: 1px solid var(--gra-lys);
+    border-radius: 999px;
+    background-color: var(--hvit);
+    color: var(--svart);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.dagbok-toggle:hover {
+    border-color: var(--svart);
+    background-color: var(--svart);
+    color: var(--hvit);
+}
+
+
+/* Uke – kort som folder seg ut */
 
 .uke {
     position: relative;
-    border-top: 1px solid var(--gra-lys);
+    border-radius: var(--radius);
+    background-color: var(--gra-lysest);
+    border: 1px solid transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.uke:last-child {
-    border-bottom: 1px solid var(--gra-lys);
+.uke:hover {
+    background-color: #eeeef0;
+}
+
+.uke[open] {
+    background-color: var(--hvit);
+    border-color: var(--gra-lys);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
 }
 
 .uke summary,
 .uke-rad {
-    position: relative;
     display: grid;
-    grid-template-columns: 80px 1fr 40px;
+    grid-template-columns: 90px 1fr 44px;
     align-items: center;
-    gap: 25px;
-    padding: 30px 10px;
+    gap: 20px;
+    padding: 28px 32px;
     cursor: pointer;
     list-style: none;
-    transition: .2s ease;
 }
 
 .uke summary::-webkit-details-marker {
     display: none;
 }
 
-.uke summary:hover {
-    padding-left: 20px;
-    padding-right: 20px;
-    background-color: var(--gra-lysest);
-}
-
-
-/* Rød markør ved hover */
-
-.uke summary::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 3px;
-    height: 0;
-    background-color: var(--rod);
-    transition: height .2s ease;
-}
-
-.uke summary:hover::before {
-    height: 100%;
-}
-
 
 /* Ukeinfo */
 
 .uke-nummer {
-    color: var(--gra);
+    color: var(--rod);
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
 }
 
 .uke-info span {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     color: var(--gra);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 .uke-info h2 {
     margin: 0;
     color: var(--svart);
-    font-size: 23px;
-    font-weight: 700;
-    letter-spacing: -0.3px;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
 }
 
 
 /* Uker som ikke er skrevet ennå */
 
 .uke-kommer {
-    --slutt-opacity: 0.55;
+    --slutt-opacity: 0.5;
     opacity: var(--slutt-opacity);
 }
 
-    .uke-kommer .uke-rad {
-        cursor: default;
-    }
+.uke-kommer:hover {
+    background-color: var(--gra-lysest);
+}
 
-    .uke-kommer .uke-info h2 {
-        font-weight: 600;
-        font-style: italic;
-    }
+.uke-kommer .uke-rad {
+    cursor: default;
+}
+
+.uke-kommer .uke-nummer {
+    color: var(--gra);
+}
+
+.uke-kommer .uke-info h2 {
+    font-weight: 500;
+}
 
 
-/* Pil */
+/* Symbol */
 
 .uke-symbol {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--hvit);
     border: 1px solid var(--gra-lys);
-    border-radius: 0;
-    position: relative;
-    transition: .25s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.4s var(--ut);
 }
 
 .uke-symbol::before {
     content: "";
-    width: 8px;
-    height: 8px;
-    border-right: 1.5px solid var(--gra-mork);
-    border-bottom: 1.5px solid var(--gra-mork);
+    width: 7px;
+    height: 7px;
+    border-right: 1.5px solid var(--svart);
+    border-bottom: 1.5px solid var(--svart);
     transform: rotate(45deg);
-    margin-top: -4px;
-    transition: .25s ease;
+    margin-top: -3px;
 }
 
-
-/* Når uken er åpnet */
-
 .uke[open] .uke-symbol {
-    background-color: var(--rod);
-    border-color: var(--rod);
+    background-color: var(--svart);
+    border-color: var(--svart);
+    transform: rotate(180deg);
 }
 
 .uke[open] .uke-symbol::before {
     border-color: var(--hvit);
-    transform: rotate(225deg);
-    margin-top: 4px;
 }
 
 
 /* Tekst */
 
 .uke-innhold {
-    max-width: 800px;
-    padding: 0 10px 45px 105px;
+    max-width: 780px;
+    padding: 4px 32px 44px 142px;
 }
 
 .uke-innhold p {
     margin: 0 0 18px;
     color: var(--gra-mork);
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.8;
 }
 
@@ -215,61 +205,91 @@
 }
 
 
+/* Personlige bidrag */
+
+.person + .person {
+    margin-top: 34px;
+    padding-top: 34px;
+    border-top: 1px solid var(--gra-lys);
+}
+
+.person h3 {
+    position: relative;
+    margin: 0 0 14px;
+    padding-left: 18px;
+    color: var(--svart);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.person h3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--rod);
+}
+
+.person-rolle {
+    color: var(--gra);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.person:not(:has(p)) {
+    min-height: 60px;
+}
+
+
 /* Mobil */
 
 @media (max-width: 750px) {
 
     .dagbok-introduksjon-innhold {
-        padding: 100px 20px 80px;
+        padding: 140px 20px 80px;
     }
 
+    /* Ordet "Prosjektdagbok" kan ikke brytes, så det må skaleres med skjermen */
     .dagbok-introduksjon h1 {
-        font-size: 55px;
-        letter-spacing: -2px;
+        font-size: 10.6vw;
     }
 
     .dagbok-innhold {
-        padding: 70px 20px 100px;
+        padding: 50px 16px 100px;
     }
 
     .uke summary,
     .uke-rad {
-        grid-template-columns: 45px 1fr 35px;
-        gap: 15px;
-        padding: 25px 5px;
+        grid-template-columns: 56px 1fr 38px;
+        gap: 12px;
+        padding: 22px 20px;
     }
 
     .uke-info h2 {
-        font-size: 17px;
-    }
-
-    .uke-innhold {
-        padding: 0 5px 35px 65px;
-    }
-
-    .uke-innhold p {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 500px) {
-
-    .uke summary,
-    .uke-rad {
-        grid-template-columns: 35px 1fr 30px;
-        gap: 10px;
-    }
-
-    .uke-info h2 {
-        font-size: 15px;
+        font-size: 18px;
     }
 
     .uke-symbol {
-        width: 27px;
-        height: 27px;
+        width: 36px;
+        height: 36px;
     }
 
     .uke-innhold {
-        padding-left: 45px;
+        padding: 0 20px 32px;
     }
+
+    .uke-innhold p {
+        font-size: 15px;
+    }
+}
+
+
+/* Plass til headeren når man hopper til en uke via lenke */
+
+.uke {
+    scroll-margin-top: 96px;
 }

@@ -1,103 +1,69 @@
 /* Introduksjon */
 
-.refleksjon-intro {
-    background-color: var(--gra-lysest);
-    border-bottom: 1px solid var(--gra-lys);
-}
-
 .refleksjon-intro > div {
-    max-width: 1100px;
+    max-width: var(--bredde);
     margin: auto;
-    padding: 150px 30px 110px;
-}
-
-.refleksjon-overtekst {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    color: var(--gra);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 3px;
-}
-
-.refleksjon-overtekst::before {
-    content: "";
-    width: 18px;
-    height: 2px;
-    background-color: var(--rod);
+    padding: 190px 30px 110px;
 }
 
 .refleksjon-intro h1 {
-    margin: 0 0 35px;
-    color: var(--svart);
-    font-size: clamp(28px, 4.2vw, 56px);
-    line-height: 1.1;
-    letter-spacing: -2px;
-    font-weight: 800;
+    margin: 0 0 32px;
+    padding-bottom: 0.06em;
+    font-size: clamp(34px, 5.6vw, 80px);
+    max-width: none;
+}
+
+@media (min-width: 900px) {
+
+    .refleksjon-intro h1 {
+        white-space: nowrap;
+    }
 }
 
 .refleksjon-intro p:last-child {
-    max-width: 650px;
-    color: var(--gra-mork);
-    font-size: 18px;
-    line-height: 1.7;
+    max-width: 620px;
+    color: #a6a6ac;
+    font-size: clamp(17px, 1.6vw, 20px);
+    line-height: 1.6;
 }
 
-.refleksjon-status {
-    display: inline-block;
-    max-width: 650px;
-    margin-top: 28px;
-    padding: 14px 22px;
-    border-left: 3px solid var(--rod);
-    background-color: var(--hvit);
-    color: var(--gra-mork);
+.refleksjon-intro p.refleksjon-status {
+    color: #c4c4c9;
     font-size: 14px;
-    font-style: italic;
 }
 
 
 /* Refleksjon */
 
 .refleksjon {
-    max-width: 1100px;
+    max-width: var(--bredde);
     margin: auto;
-    padding: 80px 30px 120px;
+    padding: 70px 30px 130px;
 }
 
 .refleksjon-del {
-    position: relative;
     display: grid;
-    grid-template-columns: 60px 1fr;
-    gap: 25px;
+    grid-template-columns: 120px 1fr;
+    gap: 30px;
     padding: 70px 0;
     border-bottom: 1px solid var(--gra-lys);
 }
 
-.refleksjon-del::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 70px;
-    width: 2px;
-    height: 24px;
-    background-color: var(--rod);
-}
-
 .refleksjon-del > span {
-    color: var(--gra);
-    font-size: 12px;
+    color: var(--rod);
+    font-size: 13px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
+    padding-top: 12px;
 }
 
 .refleksjon-del h2 {
     margin: 0 0 25px;
     color: var(--svart);
-    font-size: 32px;
+    font-size: clamp(28px, 3.6vw, 44px);
     font-weight: 700;
-    letter-spacing: -0.5px;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
 }
 
 .refleksjon-del h2:last-child {
@@ -105,39 +71,34 @@
 }
 
 .refleksjon-del p {
-    max-width: 750px;
+    max-width: var(--smal);
     margin: 0 0 20px;
     color: var(--gra-mork);
-    font-size: 16px;
-    line-height: 1.8;
+    font-size: 17px;
+    line-height: 1.75;
 }
 
 
 /* Avslutning */
 
 .refleksjon-slutt {
-    position: relative;
-    padding: 120px 0 40px;
+    padding: 120px 0 20px;
 }
 
-.refleksjon-slutt::before {
-    content: "";
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 46px;
-    height: 46px;
-    border-top: 2px solid var(--rod);
-    border-left: 2px solid var(--rod);
+/* Overtekst på lys bakgrunn */
+.refleksjon-slutt .refleksjon-overtekst {
+    border-color: var(--gra-lys);
+    background-color: var(--gra-lysest);
+    color: var(--gra-mork);
 }
 
 .refleksjon-slutt h2 {
     margin: 0;
     color: var(--svart);
-    font-size: clamp(40px, 6vw, 70px);
-    line-height: 1;
-    letter-spacing: -2px;
-    font-weight: 800;
+    font-size: clamp(44px, 8vw, 110px);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    font-weight: 700;
 }
 
 
@@ -146,41 +107,39 @@
 @media (max-width: 750px) {
 
     .refleksjon-intro > div {
-        padding: 100px 20px 80px;
-    }
-
-    .refleksjon-intro h1 {
-        font-size: 34px;
-        letter-spacing: -1px;
+        padding: 140px 20px 80px;
     }
 
     .refleksjon {
-        padding: 50px 20px 90px;
+        padding: 40px 20px 90px;
     }
 
     .refleksjon-del {
-        grid-template-columns: 40px 1fr;
-        gap: 15px;
+        grid-template-columns: 1fr;
+        gap: 10px;
         padding: 50px 0;
     }
 
-    .refleksjon-del::before {
-        top: 50px;
-    }
-
-    .refleksjon-del h2 {
-        font-size: 26px;
+    .refleksjon-del > span {
+        padding-top: 0;
     }
 
     .refleksjon-del p {
-        font-size: 15px;
+        font-size: 16px;
     }
 
     .refleksjon-slutt {
-        padding-top: 90px;
+        padding-top: 80px;
     }
+}
 
-    .refleksjon-slutt::before {
-        top: 55px;
-    }
+
+/* Tomme nummer-felt tar ikke plass */
+
+.refleksjon-del > span:empty {
+    display: none;
+}
+
+.refleksjon-del:has(> span:empty) {
+    grid-template-columns: 1fr;
 }

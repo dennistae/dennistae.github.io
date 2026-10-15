@@ -27,8 +27,8 @@ const navbar = `
     <nav class="navigasjon">
 
         <a href="${rot}index.html" class="logo">
-            <img src="${rot}images/logo.png" alt="Smaragd Motorsport logo">
-            <span class="logo-tekst">SMARAGD <span>MOTORSPORT</span></span>
+            <img class="logo-lys" src="${rot}images/logo.png" alt="Smaragd Motorsport logo">
+            <img class="logo-mork" src="${rot}images/logo-svart.png" alt="" aria-hidden="true">
         </a>
 
         <button type="button" class="meny-knapp" id="meny-knapp" aria-label="Åpne meny" aria-expanded="false" aria-controls="hovedmeny">
@@ -38,6 +38,13 @@ const navbar = `
         </button>
 
         <ul class="meny" id="hovedmeny">
+
+            <li>
+                <a href="${rot}index.html"
+                    class="${erAktivSide("index.html", "") ? "aktiv" : ""}">
+                    HJEM
+                </a>
+            </li>
 
             <li>
                 <a href="${htmlMappe}om-oss.html"
@@ -95,6 +102,10 @@ const navbar = `
                 </a>
             </li>
 
+            <li class="meny-signatur">
+                IS-302 PRAKSISPROSJEKT · GRUPPE 27 · UNIVERSITETET I AGDER
+            </li>
+
         </ul>
 
     </nav>
@@ -125,11 +136,6 @@ const footer = `
                 <p class="bunntekst-beskrivelse">
                     Utvikling av en digital løsning for Smaragd Motorsport, i samarbeid med Universitetet i Agder.
                 </p>
-
-                <div class="bunntekst-sosiale">
-                    <a href="https://www.instagram.com/smaragd.motorsport/" target="_blank" rel="noopener">Instagram</a>
-                    <a href="https://www.tiktok.com/@smaragd.motorsport1" target="_blank" rel="noopener">TikTok</a>
-                </div>
 
             </div>
 
@@ -186,6 +192,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     settOppMobilmeny();
     settOppLysboks();
+    settOppHeaderScroll();
+    apneUkeFraHash();
+    settOppApneAlle();
+    settOppTilToppen();
 
 });
 
@@ -344,4 +354,108 @@ function settOppMobilmeny() {
             }
         });
     }
+}
+
+/* Header: gjennomsiktig med hvit tekst over hero, hvit med svart tekst etter */
+
+function settOppHeaderScroll() {
+
+    const header = document.querySelector(".topptekst");
+    if (!header) return;
+
+    const hero = document.querySelector(
+        ".hero, .dagbok-introduksjon, .status-intro, .refleksjon-intro, .om-oss-introduksjon"
+    );
+
+    // Sider uten mørk toppseksjon har alltid hvit header
+    if (!hero) {
+        header.classList.add("bakgrunn");
+        return;
+    }
+
+    // På Om oss er det kun introteksten som regnes som hero
+    const mal = hero.classList.contains("om-oss-introduksjon")
+        ? hero.querySelector(".om-oss-introtekst") || hero
+        : hero;
+
+    function oppdater() {
+        const bunn = mal.getBoundingClientRect().bottom + window.scrollY;
+        const grense = bunn - header.offsetHeight;
+        header.classList.toggle("bakgrunn", window.scrollY > grense);
+    }
+
+    oppdater();
+    window.addEventListener("scroll", oppdater, { passive: true });
+    window.addEventListener("resize", oppdater);
+}
+
+
+/* Til toppen-knapp: vises på lange sider når man har scrollet et stykke */
+
+function settOppTilToppen() {
+
+    const knapp = document.createElement("button");
+    knapp.type = "button";
+    knapp.className = "til-toppen";
+    knapp.setAttribute("aria-label", "Til toppen");
+    knapp.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+    document.body.appendChild(knapp);
+
+    function oppdater() {
+        const langSide = document.documentElement.scrollHeight > window.innerHeight * 2;
+        knapp.classList.toggle("synlig", langSide && window.scrollY > 700);
+    }
+
+    knapp.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    window.addEventListener("scroll", oppdater, { passive: true });
+    window.addEventListener("resize", oppdater);
+    oppdater();
+}
+
+
+/* Dagbok: åpne eller lukk alle uker samtidig */
+
+function settOppApneAlle() {
+
+    const knapp = document.getElementById("dagbok-toggle");
+    if (!knapp) return;
+
+    const uker = [...document.querySelectorAll("details.uke")];
+    if (!uker.length) return;
+
+    function oppdater() {
+        knapp.textContent = uker.every((uke) => uke.open) ? "Lukk alle" : "Åpne alle";
+    }
+
+    knapp.addEventListener("click", () => {
+        const apne = !uker.every((uke) => uke.open);
+        uker.forEach((uke) => { uke.open = apne; });
+        oppdater();
+    });
+
+    uker.forEach((uke) => uke.addEventListener("toggle", oppdater));
+    oppdater();
+}
+
+
+/* Dagbok: åpne uken som lenken peker på (f.eks. prosjektdagbok.html#uke-42) */
+
+function apneUkeFraHash() {
+
+    function apne() {
+        const id = window.location.hash.slice(1);
+        if (!id) return;
+
+        const uke = document.getElementById(id);
+        if (!uke || uke.tagName !== "DETAILS") return;
+
+        uke.open = true;
+        setTimeout(() => uke.scrollIntoView({ behavior: "instant", block: "start" }), 80);
+    }
+
+    apne();
+    window.addEventListener("hashchange", apne);
 }
