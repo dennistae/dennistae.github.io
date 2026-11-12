@@ -1,117 +1,192 @@
-﻿    <!DOCTYPE html>
-    <html lang="no">
+﻿<!DOCTYPE html>
+<html lang="no">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Avsluttende refleksjon | SMARAGD MOTORSPORT</title>
+    <title>Avsluttende refleksjon | SMARAGD MOTORSPORT</title>
 
-        <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
 
-        <link rel="stylesheet" href="../style/stil.css">
-        <link rel="stylesheet" href="../style/avsluttende-refleksjon.css">
+    <link rel="stylesheet" href="../style/stil.css">
+    <link rel="stylesheet" href="../style/status.css">
+    <link rel="stylesheet" href="../style/avsluttende-refleksjon.css">
     <script>if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) document.documentElement.classList.add("anim");</script>
-    </head>
+</head>
 
-    <body>
+<body>
 
-        <!-- Introduksjon -->
-        <section class="refleksjon-intro">
+    <!-- Introduksjon -->
+    <section class="refleksjon-intro">
 
-            <div>
+        <div>
 
-                <h1>
-                    Dette vi tar med oss videre
-                </h1>
+            <h1>
+                Dette vi tar med oss videre
+            </h1>
 
-                <p>
-                    En samlet refleksjon over prosjektet,
-                    samarbeidet og erfaringene våre gjennom
-                    praksisperioden.
-                </p>
+            <p class="refleksjon-intro-tekst">
+                Fra første skisse til en nettbutikk som er klar for ekte kunder. Her ser vi tilbake på praksisperioden: hva vi har lært, hva som fungerte bra, og hva vi ville gjort annerledes.
+            </p>
 
-                <p class="refleksjon-status">
-                    Denne siden fylles ut med refleksjoner når prosjektet er avsluttet.
-                </p>
+            <p class="status-dato">
+                Sist oppdatert: 13.11.2026
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <main>
+
+        <!-- Felles refleksjon og innhold -->
+        <section class="status-oversikt">
+
+            <div class="status-oversikt-innhold">
+
+                <div class="status-oppsummering refleksjon-gruppe" id="felles">
+                    <h2>Som gruppe</h2>
+                    <p>
+                        Sammen har vi bygget en nettbutikk for Smaragd Motorsport helt fra bunnen av: frontend og brukeropplevelse, kasse og betaling, database og backend, brukerkontoer og admin, produktintegrasjoner, sikkerhet, transaksjoner og automatisering av import og priser. Hver av oss hadde et tydelig ansvarsområde, men vi har hele tiden samhandlet slik at delene bygger på hverandre og passer sammen. Frontend henter data fra den samme Supabase-databasen som produktimporten fyller, kassen er koblet til ordre- og betalingsflyten, og alt kjører på det samme hostingoppsettet.
+                    </p>
+                    <p>
+                        Utfordringene har ligget i samspillet mellom delene. En leverandør ble byttet underveis, over 5000 beskrivelser måtte oversettes, og da hosting, design og ordrekode skulle samles i main, oppsto det konflikter. Vi løste dem ved å snakke sammen og hjelpe hverandre, for eksempel da Noa kjørte oversettelsen i stedet for Marius, fordi den ble for tung for PC-en hans. Det lureste vi gjorde, var å fordele ansvaret tidlig, bruke felles database og GitHub-repo, og teste betalingsflyten i Stripe sandbox og med automatiske tester for ordre og betaling. Vi har lært at et slikt prosjekt handler like mye om samarbeid, Git og avklaringer som om selve koden.
+                    </p>
+                    <p>
+                        Som gruppe ville vi gjort flere ting annerledes. Vi burde avklart databasestruktur, leverandører og valuta tidligere, og koblet frontend, backend og ekte data sammen tidlig i stedet for å utvikle hver for oss på testdata. Vi burde også slått sammen i main oftere, siden de sene sammenslåingene ga flest konflikter. Vi burde også tatt opp betalingsløsning og hosting med bedriften tidligere, siden Stripe-konto og hosting ikke var avklart før langt ut i utviklingen.
+                    </p>
+                </div>
+
+                <nav class="status-toc" aria-label="Innhold">
+                    <h2>Innhold</h2>
+                    <ol>
+                        <li><a href="#felles">Som gruppe</a></li>
+                        <li><a href="#dennis"><span>Dennis<span class="toc-rolle">Frontend &amp; kundeopplevelse</span></span></a></li>
+                        <li><a href="#efe"><span>Efe<span class="toc-rolle">Produktdata &amp; integrasjoner</span></span></a></li>
+                        <li><a href="#marius"><span>Marius<span class="toc-rolle">Backend, ordre &amp; transaksjoner</span></span></a></li>
+                        <li><a href="#mohamed"><span>Mohamed<span class="toc-rolle">Pris, valuta &amp; automatisering</span></span></a></li>
+                        <li><a href="#noa"><span>Noa<span class="toc-rolle">Adminsystem, drift &amp; compliance</span></span></a></li>
+                    </ol>
+                </nav>
 
             </div>
 
         </section>
 
 
-        <!-- Innhold -->
-        <main class="refleksjon">
+        <!-- Personlige refleksjoner -->
+        <div class="refleksjon">
 
-            <section class="refleksjon-del">
+            <section class="refleksjon-del refleksjon-person" id="dennis">
 
-                <span></span>
+                <div class="refleksjon-person-hode">
+                    <h2>Dennis</h2>
+                    <p>Frontend &amp; kundeopplevelse</p>
+                </div>
 
-                <div>
-                    <h2>Prosjektet</h2>
+                <div class="refleksjon-person-tekst">
+                    <p>
+                        Gjennom praksisperioden har jeg lært hvor mye frontend handler om kundeopplevelsen, og ikke bare om utseende. Jeg startet med å studere nettsider bedriften likte, og det ga et godt grunnlag for et rolig og oversiktlig design tilpasset mobil.
+                    </p>
+                    <p>
+                        Det lureste jeg gjorde, var å samle header, footer og karuseller i felles komponenter, og å ta universell utforming med tidlig, slik at det ikke ble en stor jobb helt på slutten. Det var også lurt å la kassen hindre feil underveis, for eksempel ved å begrense postnummer og telefonnummer.
+                    </p>
+                    <p>
+                        Det vanskeligste var at jeg lenge utviklet designet på testdata, mens produktdata og kassen ble ferdige senere. Da måtte jeg justere layouten flere ganger, og redesignet midt i perioden kostet tid. Hvis jeg skulle gjort noe annerledes, ville jeg satt opp et felles designsystem med faste farger, avstander og knapper fra første dag. Jeg ville også koblet meg til ekte produktdata tidligere, og testet på en ekte mobil og med skjermleser fortløpende. Jeg tar med meg at god frontend krever tett samarbeid med dem som lager data og backend.
+                    </p>
                 </div>
 
             </section>
 
 
-            <section class="refleksjon-del">
+            <section class="refleksjon-del refleksjon-person" id="efe">
 
-                <span></span>
+                <div class="refleksjon-person-hode">
+                    <h2>Efe</h2>
+                    <p>Produktdata &amp; integrasjoner</p>
+                </div>
 
-                <div>
-                    <h2>Samarbeid</h2>
+                <div class="refleksjon-person-tekst">
+                    <p>
+                        Gjennom praksisperioden har jeg lært mye om hvordan det er å jobbe med et reelt utviklingsprosjekt for en bedrift. Jeg har fått mer erfaring med Supabase, databaser og import av produkter fra eksterne leverandører. Jeg synes vi gjorde det bra da vi tidlig fordelte ansvarsområdene og brukte samme database og samme GitHub-repo.
+                    </p>
+                    <p>
+                        Den største utfordringen har vært å håndtere flere tusen produkter med ulik struktur, og at leverandørene ble byttet underveis. Dette har lært meg hvor viktig planlegging og kvalitetssikring er. Hvis jeg skulle gjort noe annerledes, ville jeg planlagt databasestrukturen grundigere og testet produktimporten tidligere. Jeg har også lært at god kommunikasjon er avgjørende når flere jobber med forskjellige deler av samme løsning.
+                    </p>
                 </div>
 
             </section>
 
 
-            <section class="refleksjon-del">
+            <section class="refleksjon-del refleksjon-person" id="marius">
 
-                <span></span>
+                <div class="refleksjon-person-hode">
+                    <h2>Marius</h2>
+                    <p>Backend, ordre &amp; transaksjoner</p>
+                </div>
 
-                <div>
-                    <h2>Hva vi har lært</h2>
+                <div class="refleksjon-person-tekst">
+                    <p>
+                        Jeg bygde produktimporten fra leverandørene. Shopify-butikkene hentes som JSON, og Remus hentes med HTML og regex, der 381 av 385 produkter kom inn. Senere la jeg til Millway som sjette leverandør og ryddet i importen, og da ble 1 566 utgåtte Carbon Factory-produkter fjernet. Jeg laget også backend for kassen med Stripe, flyttet ordrene fra SQLite til et eget skjema i Supabase PostgreSQL og la inn fraktberegning etter Postens priser for 2026. Ordre- og betalingsflyten ble merget inn i main, og 94 tester består.
+                    </p>
+                    <p>
+                        Oversettelsen av over 5000 produktbeskrivelser ble for tung for PC-en min, så Noa kjørte den på sin. Da hosting og Dennis sitt design ble merget inn i main 22. oktober, passet ikke ordredelen min lenger, fordi den brukte SQLite. Jeg måtte flytte databasen og løse konflikter med det nye kassedesignet. Det tok også tid å sette opp lokal PostgreSQL i Docker og admin-innloggingen. Hvis jeg skulle gjort noe annerledes, ville jeg valgt PostgreSQL og avklart valuta og leverandører tidligere.
+                    </p>
                 </div>
 
             </section>
 
 
-            <section class="refleksjon-del">
+            <section class="refleksjon-del refleksjon-person" id="mohamed">
 
-                <span></span>
+                <div class="refleksjon-person-hode">
+                    <h2>Mohamed</h2>
+                    <p>Pris, valuta &amp; automatisering</p>
+                </div>
 
-                <div>
-                    <h2>Utfordringer</h2>
+                <div class="refleksjon-person-tekst">
+                    <p>
+                        Praksisprosjektet hos Smaragd Motorsport handlet om å utvikle en nettbutikk med fokus på digitalisering og automatisering. Mitt hovedansvar var planleggingen av pris- og valutasystemet, men jeg arbeidet også med e-postverifisering, databaseintegrasjon og hosting.
+                    </p>
+                    <p>
+                        Jeg har styrket kompetansen min innen ASP.NET Core, PostgreSQL, API-integrasjoner, autentisering og hosting. Overgangen fra lokal utvikling til Render ga utfordringer med databasetilkobling, sertifikater og konfigurasjon, og dette ga meg erfaring med feilsøking og sikkerhet. Samarbeidet i gruppen viste hvor viktig det er med tydelig kommunikasjon om tekniske avhengigheter, for eksempel mellom prisene Marius lagrer og omregningen jeg planla.
+                    </p>
+                    <p>
+                        I ettertid ville jeg avklart integrasjonene tidligere og skrevet mer dokumentasjon. Jeg ville også satt opp mer systematisk testing, og begynt på selve omregningen tidligere. Praksisperioden har gitt meg en helhetlig forståelse av systemutvikling i en reell virksomhet.
+                    </p>
                 </div>
 
             </section>
 
-            <section class="refleksjon-del">
 
-                <span></span>
+            <section class="refleksjon-del refleksjon-person" id="noa">
 
-                <div>
-                    <h2>Hva kunne vi ha gjort annerledes</h2>
+                <div class="refleksjon-person-hode">
+                    <h2>Noa</h2>
+                    <p>Adminsystem, drift &amp; compliance</p>
+                </div>
+
+                <div class="refleksjon-person-tekst">
+                    <p>
+                        Dette semesteret har gitt meg mye læring, særlig gjennom praksisprosjektet med Smaragd Motorsport. Vi har bygget en nettbutikk fra bunnen av som skal håndtere ekte transaksjoner fra ekte kunder. Det tvang oss til å tenke lenger enn koden: personvern, kjøpsvilkår og kunderettigheter var like viktige som den tekniske løsningen.
+                    </p>
+                    <p>
+                        Prosjektet har også lært meg å være fleksibel, både når bedriften kom med nye ønsker, og når fokuset måtte flyttes dit behovet var størst. Det skjedde for eksempel da jeg hjalp Marius med å oversette over 5000 produktbeskrivelser. Alle i gruppen har hatt egne ansvarsområder, men vi har støttet hverandre der det trengtes. Den måten å jobbe på tar jeg med meg inn i fremtidige prosjekter.
+                    </p>
                 </div>
 
             </section>
 
-            <section class="refleksjon-del">
+        </div>
 
-                <span></span>
+    </main>
 
-                <div>
-                    <h2>Oppsummering</h2>
-                </div>
+    <script src="../JS/komponenter.js"></script>
 
-            </section>
+    <script src="../JS/animasjoner.js"></script>
 
-        </main>
+</body>
 
-        <script src="../JS/komponenter.js"></script>
-
-        <script src="../JS/animasjoner.js"></script>
-
-    </body>
-
-    </html>
+</html>

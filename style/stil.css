@@ -117,7 +117,7 @@ body.meny-apen {
 
 .navigasjon {
     position: relative;
-    max-width: 1300px;
+    max-width: var(--bredde);
     margin: 0 auto;
     height: 76px;
     display: grid;
@@ -1313,17 +1313,19 @@ a.folg-uke:hover {
 .bunntekst {
     background-color: var(--svart);
     color: var(--hvit);
-    padding: 90px 30px 0;
+    padding: 90px 0 0;
     border-top: 1px solid var(--linje-mork);
 }
 
+/* Samme bredde og sidemarg som headeren, slik at logoene står på linje */
 .bunntekst-innhold {
-    max-width: calc(var(--bredde) - 60px);
+    max-width: var(--bredde);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
     gap: 40px 60px;
-    padding-bottom: 70px;
+    padding: 0 30px 70px;
 }
 
 .bunntekst-om {
@@ -1348,7 +1350,7 @@ a.folg-uke:hover {
 }
 
 .bunntekst-logo img {
-    width: 84px;
+    width: 92px;
     height: auto;
     flex-shrink: 0;
 }
@@ -1410,9 +1412,9 @@ a.folg-uke:hover {
 }
 
 .bunntekst-bunnlinje p {
-    max-width: calc(var(--bredde) - 60px);
+    max-width: var(--bredde);
     margin: 0 auto;
-    padding: 26px 0;
+    padding: 26px 30px;
     color: #6e6e73;
     font-size: 13px;
     text-align: left;
@@ -1434,6 +1436,12 @@ a.folg-uke:hover {
 
     .navigasjon::after {
         display: none;
+    }
+
+    .bunntekst-innhold,
+    .bunntekst-bunnlinje p {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .logo img {
@@ -1721,7 +1729,7 @@ a.folg-uke:hover {
     }
 
     .bunntekst {
-        padding: 60px 20px 0;
+        padding: 60px 0 0;
     }
 
     .bunntekst-innhold {

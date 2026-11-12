@@ -416,93 +416,261 @@
 
 
             <!-- Uke 43 -->
-            <div class="uke uke-kommer" id="uke-43">
+            <details class="uke" id="uke-43">
 
-                <div class="uke-rad">
+                <summary>
                     <div class="uke-nummer">UKE 43</div>
 
                     <div class="uke-info">
                         <span>19. oktober – 25. oktober 2026</span>
-                        <h2>Kommer snart</h2>
+                        <h2>Testing av betaling, hosting og juridiske dokumenter</h2>
                     </div>
+
+                    <div class="uke-symbol"></div>
+                </summary>
+
+                <div class="uke-innhold">
+
+                    <div class="person">
+                        <h3>Dennis <span class="person-rolle">– Frontend &amp; kundeopplevelse</span></h3>
+                        <p>
+                            Jeg gikk gjennom hele nettsiden med tanke på universell utforming og tilgjengelighet (WCAG). Jeg rettet blant annet kontrast, tastaturnavigasjon og navn på knapper og lenker, slik at siden fungerer også med skjermleser. Designet mitt ligger nå oppå Mohameds hostingoppsett og Noas e-postverifisering, slik at frontend fungerer sammen med resten av løsningen.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Efe <span class="person-rolle">– Produktdata &amp; integrasjoner</span></h3>
+                        <p>
+                            Denne uken har jeg kvalitetssikret produktdataene i Supabase etter at leverandørene ble byttet. Jeg har kontrollert at produktnavn, priser, bilder, kategorier og merker er registrert likt for alle leverandørene. Jeg har også lett etter duplikater og produkter som mangler informasjon. Den unike lenken (url) som Marius la inn per produkt, hjelper her, men jeg ser etter kopier som likevel har sluppet gjennom.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Marius <span class="person-rolle">– Backend, ordre &amp; transaksjoner</span></h3>
+                        <p>
+                            Jeg testet betalingsflyten lokalt mot Stripe sandbox med Stripe CLI, webhook-videresending og nøkler i dotnet user-secrets. Kjøp med testkort fungerte: webhooken bekreftet betalingen, og ordren ble registrert som betalt. Jeg satte også opp utviklingsmiljøet på Mac.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Mohamed <span class="person-rolle">– Pris, valuta &amp; automatisering</span></h3>
+                        <p>
+                            Denne uken fortsatte jeg arbeidet med hosting og databaseintegrasjon. Jeg konfigurerte PostgreSQL i Supabase for ASP.NET Core Identity, opprettet et eget databaseskjema og satte opp begrensede tilgangsrettigheter. Jeg jobbet også med Docker og Render, inkludert miljøvariabler, SSL-sertifikater og sikker databasetilkobling. Jeg testet registrering, e-postverifisering og innlogging, og kontrollerte at brukerdata ble lagret riktig uten å påvirke produktdataene.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Noa <span class="person-rolle">– Adminsystem, drift &amp; compliance</span></h3>
+                        <p>
+                            Jeg utarbeidet de juridiske dokumentene for nettbutikken: kjøpsvilkår, retur og angrerett, personvernerklæring, og frakt og levering. Jeg brukte maler fra nettet som utgangspunkt og tilpasset innholdet til nettbutikkens behov. Dennis har opprettet sidene, og tekstene ble lagt inn på dem.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Felles for gruppen</h3>
+                        <p>
+                            Denne uken har vi gjort nettsiden klarere for drift. Hosting på Render og databasen for brukerkontoer er konfigurert, betalingsflyten er testet mot Stripe sandbox, og de juridiske dokumentene til nettbutikken er skrevet. Frontend er gjennomgått for universell utforming, og produktdataene er kvalitetssikret.
+                        </p>
+                    </div>
+
                 </div>
 
-            </div>
+            </details>
 
 
             <!-- Uke 44 -->
-            <div class="uke uke-kommer" id="uke-44">
+            <details class="uke" id="uke-44">
 
-                <div class="uke-rad">
+                <summary>
                     <div class="uke-nummer">UKE 44</div>
 
                     <div class="uke-info">
                         <span>26. oktober – 1. november 2026</span>
-                        <h2>Kommer snart</h2>
+                        <h2>Ordre i Supabase, ny leverandør og adminbrukere</h2>
                     </div>
+
+                    <div class="uke-symbol"></div>
+                </summary>
+
+                <div class="uke-innhold">
+
+                    <div class="person">
+                        <h3>Dennis <span class="person-rolle">– Frontend &amp; kundeopplevelse</span></h3>
+                        <p>
+                            Jeg byttet ut ikonene med SVG-ikoner som skjules for skjermleser, og laget en sidekart-side for å gi en god oversikt over strukturen på nettsiden. Bildegalleriet på produktsidene har nå fullskjermsvisning med sveip og zoom på mobil, og footer og navigasjon er tilpasset mobil. Jeg konkretiserte kassen og gjorde den mer nøyaktig og feilfri for brukerne, slik at man ikke kan fylle ut mer enn 4 siffer i postnummer og 8 siffer i telefonnummer. Stripe-informasjonen er samlet under Betaling. Jeg hjalp Marius med å løse konfliktene mellom kassedesignet mitt og ordrekoden hans.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Efe <span class="person-rolle">– Produktdata &amp; integrasjoner</span></h3>
+                        <p>
+                            Denne uken kom produktene fra Millway, som er en sjette leverandør, inn i databasen, og jeg har kontrollert at de følger samme struktur som produktene fra de fem andre. Jeg har sett på manglende bilder, kategorier og beskrivelser, siden det er for mange produkter til å rette opp manuelt. Jeg har også sjekket at eksisterende produkter fortsatt er uendret, og at en ny import ikke overskriver eller lager kopier av produkter som allerede finnes.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Marius <span class="person-rolle">– Backend, ordre &amp; transaksjoner</span></h3>
+                        <p>
+                            Jeg la til Millway som sjette leverandør i produktimporten (PR #27) og løste konflikter med det nye kassedesignet til Dennis. Ordredatabasen er flyttet fra SQLite til et eget privat skjema i Supabase PostgreSQL. Der har appen ikke lov til å slette ordrer eller endre tabeller. Jeg rettet også en layoutfeil som fikk bekreftelsessiden til å krasje.
+                        </p>
+                        <p>
+                            Jeg skrev 74 tester for ordre, statusregler og webhooks, og ordre- og betalingsflyten er merget inn i main (PR #29). Lokalt kjørte jeg importen mot PostgreSQL i Docker, og 266 Millway-produkter kom inn. Det vanskeligste var Git-branchene og oppsettet av lokal database og admin-innlogging.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Mohamed <span class="person-rolle">– Pris, valuta &amp; automatisering</span></h3>
+                        <p>
+                            Denne uken rettet jeg arbeidet mot pris- og valutasystemet. Marius lagrer leverandørprisene i euro og pund, så jeg undersøkte hvordan de kan omregnes til norske kroner med valutakurser. Jeg planla prisberegningen ut fra leverandørpris, valutakurs og bedriftens prisregler, og hvordan dette kan kobles til produktdataene i Supabase.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Noa <span class="person-rolle">– Adminsystem, drift &amp; compliance</span></h3>
+                        <p>
+                            Jeg satte opp et system for adminbrukere i Supabase. Det bygger videre på brukerhåndteringen Mohamed og jeg la i Supabase Postgres, men nå har alle i gruppen tilgang til den samme adminbrukeren.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Felles for gruppen</h3>
+                        <p>
+                            Denne uken ble ordre- og betalingsflyten merget inn i main, og ordrene er flyttet til et eget skjema i Supabase. Millway er lagt til som sjette leverandør, og adminbrukeren ligger i Supabase slik at hele gruppen bruker samme konto. Kassen og mobilvisningen er samtidig forbedret, og prissystemet er planlagt.
+                        </p>
+                    </div>
+
                 </div>
 
-            </div>
+            </details>
 
 
             <!-- Uke 45 -->
-            <div class="uke uke-kommer" id="uke-45">
+            <details class="uke" id="uke-45">
 
-                <div class="uke-rad">
+                <summary>
                     <div class="uke-nummer">UKE 45</div>
 
                     <div class="uke-info">
                         <span>2. november – 8. november 2026</span>
-                        <h2>Kommer snart</h2>
+                        <h2>Frakt, adminfunksjoner og opprydding i importen</h2>
                     </div>
+
+                    <div class="uke-symbol"></div>
+                </summary>
+
+                <div class="uke-innhold">
+
+                    <div class="person">
+                        <h3>Dennis <span class="person-rolle">– Frontend &amp; kundeopplevelse</span></h3>
+                        <p>
+                            Denne uken tilpasset jeg kassen og ordreoppsummeringen. Deretter gikk jeg gjennom hele kjøpsløpet fra produktside via handlekurv og kasse til bekreftelse. Her rettet jeg små avvik i avstander, tekster og feilmeldinger.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Efe <span class="person-rolle">– Produktdata &amp; integrasjoner</span></h3>
+                        <p>
+                            Denne uken har jeg testet at produktene fra Supabase vises riktig i katalogen til Dennis. Jeg har sammenlignet det kunden ser med det som ligger i databasen, og sett hvordan manglende eller feil verdier påvirker visningen. Etter at Marius ryddet bort utgåtte Carbon Factory-produkter, kontrollerte jeg at importen ikke hadde laget duplikater eller fjernet produkter som skulle bli igjen. Jeg har også sjekket at hemmelige nøkler ikke ligger i kildekoden eller i GitHub.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Marius <span class="person-rolle">– Backend, ordre &amp; transaksjoner</span></h3>
+                        <p>
+                            Frakten beregnes nå ut fra vekt og størrelse etter Postens priser for 2026 (PR #31). Vekten hentes fra leverandørene, og størrelsen utledes fra produktkategorien. Dennis viser fraktprisen i kassen.
+                        </p>
+                        <p>
+                            Importen sletter nå utgåtte produkter og prøver på nytt når en leverandør svarer «for mange forespørsler» (PR #32). Da importen kjørte på nytt, ble 1 566 utgåtte Carbon Factory-produkter fjernet, og 94 tester består. Nye produkter oversettes foreløpig ikke automatisk i importen på grunn av kostnad. De over 5000 eksisterende beskrivelsene ble oversatt i uke 41. Leverandørprisene lagres i euro og pund uten omregning, og det må løses før ekte salg.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Mohamed <span class="person-rolle">– Pris, valuta &amp; automatisering</span></h3>
+                        <p>
+                            Denne uken arbeidet jeg videre med utformingen av prissystemet. Jeg planla hvordan leverandørpriser, valutakurser og beregnede salgspriser skal lagres i databasen. Jeg undersøkte også hvordan prisberegningen kan bygges som en egen tjeneste i backend, slik at prisene beregnes likt og uavhengig av frontend. I tillegg vurderte jeg merverdiavgift og avrunding av priser.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Noa <span class="person-rolle">– Adminsystem, drift &amp; compliance</span></h3>
+                        <p>
+                            Jeg utviklet brukerhåndtering og produkthåndtering på adminsiden. Administratorer kan nå se og administrere brukere, samt legge til, redigere og fjerne produkter.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Felles for gruppen</h3>
+                        <p>
+                            Denne uken beregnes frakten ut fra vekt og størrelse, og kassen viser fraktprisen. Importen er ryddet, produktene er kontrollert mot katalogen, og administratorer kan håndtere brukere og produkter. Prissystemet er utformet, men valutaomregningen gjenstår.
+                        </p>
+                    </div>
+
                 </div>
 
-            </div>
+            </details>
 
 
             <!-- Uke 46 -->
-            <div class="uke uke-kommer" id="uke-46">
+            <details class="uke" id="uke-46">
 
-                <div class="uke-rad">
+                <summary>
                     <div class="uke-nummer">UKE 46</div>
 
                     <div class="uke-info">
                         <span>9. november – 15. november 2026</span>
-                        <h2>Kommer snart</h2>
+                        <h2>Sluttkontroll og veien videre</h2>
                     </div>
+
+                    <div class="uke-symbol"></div>
+                </summary>
+
+                <div class="uke-innhold">
+
+                    <div class="person">
+                        <h3>Dennis <span class="person-rolle">– Frontend &amp; kundeopplevelse</span></h3>
+                        <p>
+                            Jeg testet kompatibiliteten på nettbrett, mobil og pc og sjekket at nettsiden fungerer og vises som forventet på alle enhetene. Jeg kontrollerte også siden på nytt mot WCAG og finpusset detaljer i designet.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Efe <span class="person-rolle">– Produktdata &amp; integrasjoner</span></h3>
+                        <p>
+                            Denne uken har jeg gjort en sluttkontroll av produktdataene. Jeg har sett etter feil i bilder, kategorier, merker og priser på produktsidene, og kontrollert at produkter som mangler informasjon ikke skaper feil. Leverandørprisene ligger fortsatt i euro og pund, og de må omregnes før salg. Dette hører sammen med arbeidet til Mohamed.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Marius <span class="person-rolle">– Backend, ordre &amp; transaksjoner</span></h3>
+                        <p>
+                            Jeg kontrollerte importen i Supabase og testet frakten i kassen. Dette gjenstår: valutaomregning (Mohamed har planlagt løsningen), ordretabellene i Supabase-produksjon, Stripe-nøkler og webhook i Render, ordrebekreftelse på e-post og håndtering av utsolgte varer.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Mohamed <span class="person-rolle">– Pris, valuta &amp; automatisering</span></h3>
+                        <p>
+                            Denne uken gjennomgikk jeg planen for pris- og valutasystemet og vurderte forbedringer. En utfordring er å håndtere endringer i valutakurser og feil fra kurs-API-et uten at produktprisene påvirkes negativt. Selve omregningen er ikke koblet til produktene ennå. Mot slutten av uken kartla jeg arbeidsoppgavene, de tekniske valgene og utfordringene mine gjennom praksisperioden, som grunnlag for refleksjonen.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Noa <span class="person-rolle">– Adminsystem, drift &amp; compliance</span></h3>
+                        <p>
+                            Jeg har påbegynt en funksjon for å legge til eller fjerne leverandører fra adminsiden. Dette gjør det lettere for bedriften å håndtere leverandørene etter at vi har overlevert prosjektet.
+                        </p>
+                    </div>
+
+                    <div class="person">
+                        <h3>Felles for gruppen</h3>
+                        <p>
+                            Siste uke har vi kontrollert importen, produktdataene, frakten og frontend på tvers av enheter, og arbeidet med refleksjonene våre. Noa har påbegynt leverandørhåndtering i adminsiden. Dette gjenstår: valutaomregning, ordretabellene i Supabase-produksjon, Stripe-nøkler og webhook i Render, ordrebekreftelse på e-post og håndtering av utsolgte varer.
+                        </p>
+                    </div>
+
                 </div>
 
-            </div>
-
-
-            <!-- Uke 47 -->
-            <div class="uke uke-kommer" id="uke-47">
-
-                <div class="uke-rad">
-                    <div class="uke-nummer">UKE 47</div>
-
-                    <div class="uke-info">
-                        <span>16. november – 22. november 2026</span>
-                        <h2>Kommer snart</h2>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <!-- Uke 48 -->
-            <div class="uke uke-kommer" id="uke-48">
-
-                <div class="uke-rad">
-                    <div class="uke-nummer">UKE 48</div>
-
-                    <div class="uke-info">
-                        <span>23. november – 27. november 2026</span>
-                        <h2>Kommer snart</h2>
-                    </div>
-                </div>
-
-            </div>
+            </details>
 
         </div>
 
