@@ -20,16 +20,32 @@
     }
 }
 
-.refleksjon-intro p:last-child {
-    max-width: 620px;
+.refleksjon-intro-tekst {
+    max-width: 700px;
+    text-wrap: balance;
     color: #a6a6ac;
     font-size: clamp(17px, 1.6vw, 20px);
     line-height: 1.6;
 }
 
-.refleksjon-intro p.refleksjon-status {
-    color: #c4c4c9;
-    font-size: 14px;
+
+/* Felles refleksjon */
+
+.refleksjon-gruppe p + p {
+    margin-top: 18px;
+}
+
+.refleksjon-gruppe p {
+    margin: 0;
+    color: var(--svart);
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.7;
+}
+
+.refleksjon-gruppe,
+.status-toc {
+    scroll-margin-top: 96px;
 }
 
 
@@ -43,39 +59,62 @@
 
 .refleksjon-del {
     display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 30px;
+    grid-template-columns: 300px 1fr;
+    gap: 50px;
     padding: 70px 0;
     border-bottom: 1px solid var(--gra-lys);
+    scroll-margin-top: 96px;
 }
 
-.refleksjon-del > span {
-    color: var(--rod);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    padding-top: 12px;
+.refleksjon-del:last-child {
+    border-bottom: none;
 }
 
-.refleksjon-del h2 {
-    margin: 0 0 25px;
+.refleksjon-person-hode {
+    align-self: start;
+}
+
+.refleksjon-person-hode h2 {
+    margin: 0 0 12px;
     color: var(--svart);
-    font-size: clamp(28px, 3.6vw, 44px);
+    font-size: clamp(32px, 4vw, 48px);
     font-weight: 700;
-    line-height: 1.08;
+    line-height: 1.05;
     letter-spacing: -0.035em;
 }
 
-.refleksjon-del h2:last-child {
-    margin-bottom: 0;
+.refleksjon-person-hode p {
+    position: relative;
+    padding-left: 18px;
+    color: var(--gra);
+    font-size: 14px;
+    font-weight: 500;
 }
 
-.refleksjon-del p {
+.refleksjon-person-hode p::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--rod);
+}
+
+.refleksjon-person-tekst {
     max-width: var(--smal);
-    margin: 0 0 20px;
+}
+
+.refleksjon-person-tekst p {
+    margin: 0 0 22px;
     color: var(--gra-mork);
     font-size: 17px;
     line-height: 1.75;
+}
+
+.refleksjon-person-tekst p:last-child {
+    margin-bottom: 0;
 }
 
 
@@ -116,15 +155,11 @@
 
     .refleksjon-del {
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 22px;
         padding: 50px 0;
     }
 
-    .refleksjon-del > span {
-        padding-top: 0;
-    }
-
-    .refleksjon-del p {
+    .refleksjon-person-tekst p {
         font-size: 16px;
     }
 
@@ -134,12 +169,11 @@
 }
 
 
-/* Tomme nummer-felt tar ikke plass */
+/* Rolle under navnet i innholdsfortegnelsen */
 
-.refleksjon-del > span:empty {
-    display: none;
-}
-
-.refleksjon-del:has(> span:empty) {
-    grid-template-columns: 1fr;
+.status-toc .toc-rolle {
+    display: block;
+    color: var(--gra);
+    font-size: 13px;
+    font-weight: 400;
 }
